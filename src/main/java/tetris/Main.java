@@ -7,5 +7,4 @@ public class Main {
 		System.out.println("test commit2 8/03/2016");
 		System.out.println("YOOOOOOO");
 	}
-
 }
