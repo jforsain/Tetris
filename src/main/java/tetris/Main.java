@@ -8,5 +8,7 @@ public class Main {
 		int a = 2;
 		double b = 20.0;
 		double ca = 30.0;
+		
+		double cb =40; 
 	}
 }
