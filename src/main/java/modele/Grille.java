@@ -23,4 +23,8 @@ public class Grille {
 		
 		return s;
 	}
+
+	public boolean blocsTombant() {
+		return false;
+	}
 }

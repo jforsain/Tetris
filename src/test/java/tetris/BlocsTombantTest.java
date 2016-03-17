@@ -26,6 +26,12 @@ public class BlocsTombantTest {
 					"...\n", grille.toString());	
 		}
 		
+		@Test
+		public void a_pas_de_blocs_qui_tombent()
+		{
+			assertFalse(grille.blocsTombant());
+		}
+		
 		
 	}
 }
