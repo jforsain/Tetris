@@ -31,7 +31,5 @@ public class BlocsTombantTest {
 		{
 			assertFalse(grille.blocsTombant());
 		}
-		
-		
 	}
 }
