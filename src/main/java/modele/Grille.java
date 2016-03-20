@@ -2,22 +2,22 @@ package modele;
 
 public class Grille {
 
-	private int lignes;
-	private int colonnes;
-	private int la_grille[][];
+	private int iLignes;
+	private int iColonnes;
+	private int iLaGrilleTab[][];
 	
 	public Grille(int pLignes, int pColonnes) {
 		super();
-		this.lignes = pLignes;
-		this.colonnes = pColonnes;
-		this.la_grille = new int[pLignes][pColonnes];
+		this.iLignes = pLignes;
+		this.iColonnes = pColonnes;
+		this.iLaGrilleTab = new int[pLignes][pColonnes];
 	}
 	
 	public String toString()
 	{
 		String s  = "";
-		for (int i = 0; i < lignes; i++) {
-			for (int j = 0; j < colonnes; j++) {
+		for (int i = 0; i < iLignes; i++) {
+			for (int j = 0; j < iColonnes; j++) {
 				s += "?";
 			}
 			 s += "\n";
@@ -31,11 +31,11 @@ public class Grille {
 		return false;
 	}
 
-	public int[][] get_la_grille() {
-		return la_grille;
+	public int[][] getiLaGrilleTab() {
+		return iLaGrilleTab;
 	}
 
-	public void set_la_grille(int la_grille[][]) {
-		this.la_grille = la_grille;
+	public void setiLaGrilleTab(int iLaGrilleTab[][]) {
+		this.iLaGrilleTab = iLaGrilleTab;
 	}
 }
