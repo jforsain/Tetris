@@ -1,58 +1,60 @@
 package modele;
 
-public class Piece {
-	private int iTypePiece;
-	private int iPosition;
-	private int iLaPieceTab[][];
+public abstract class Piece {
 	
-	public Piece (int iTypePiece, int iPosition){
-		super();
-		this.iTypePiece = iTypePiece;
-		this.iPosition = iPosition;
+	protected int iPosition;
+	protected int iLaPieceTab[];
+	
+	public Piece (){
 		
-		initialiserPiece(iTypePiece);
-		
+		this.iPosition = 1;
 	}
-	
+
 	public void pivoterGauche()
 	{
-		
+		switch(this.iPosition)
+		{
+		case 1:
+			setiPosition(2);
+			break;
+		case 2:
+			setiPosition(3);
+			break;
+		case 3:
+			setiPosition(4);
+			break;
+		case 4:
+			setiPosition(1);
+			break;
+		}
 	}
 	
 	public void pivoterDroit()
 	{
-		
-	}
-	
-	public void deplacerGauche()
-	{
-		
-	}
-	
-	public void deplacerDroite()
-	{
-		
-	}
-	
-	public void descenteInstantanee()
-	{
-		
-	}
-	
-	public void desecenteAcceleree()
-	{
-
-	}
-	
-	private void initialiserPiece (int iTypePiece) {
-		switch (iTypePiece) {
-		case 0 : this.iLaPieceTab = new int[][] { {0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0},{0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0} }; break;
-		case 1 : this.iLaPieceTab = new int[][] { {0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0},{0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0},{0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0},{0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0} }; break;
-		case 2 : this.iLaPieceTab = new int[][] { {0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0},{1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},{0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0},{1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0} }; break;
-		case 3 : this.iLaPieceTab = new int[][] { {0,0,1,0,0,1,1,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,1,1,0,0,0,1,1,0,0,0,0},{0,0,1,0,0,1,1,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,1,1,0,0,0,1,1,0,0,0,0} }; break;
-		case 4 : this.iLaPieceTab = new int[][] { {0,1,0,0,0,1,1,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,0,1,0,0,1,1,1,0,0,0,0},{0,0,0,1,0,0,1,1,0,0,0,1,0,0,0,0},{0,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0} }; break;
-		case 5 : this.iLaPieceTab = new int[][] { {0,0,1,0,0,0,1,0,0,1,1,0,0,0,0,0},{0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0},{0,1,1,0,0,1,0,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,0} }; break;
-		case 6 : this.iLaPieceTab = new int[][] { {0,1,0,0,0,1,0,0,0,1,1,0,0,0,0,0},{0,0,0,0,0,0,0,1,0,1,1,1,0,0,0,0},{0,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0} }; break;
+		switch(this.iPosition)
+		{
+		case 1:
+			setiPosition(4);
+			break;
+		case 2:
+			setiPosition(1);
+			break;
+		case 3:
+			setiPosition(2);
+			break;
+		case 4:
+			setiPosition(3);
+			break;
 		}
 	}
+	
+	public int getiPosition() {
+		return iPosition;
+	}
+
+	public void setiPosition(int iPosition) {
+		this.iPosition = iPosition;
+	}
+
+	public abstract int[] getiLaPieceTab();
 }

@@ -18,7 +18,7 @@ public class Grille {
 		String s  = "";
 		for (int i = 0; i < iLignes; i++) {
 			for (int j = 0; j < iColonnes; j++) {
-				s += "?";
+				s += ".";
 			}
 			 s += "\n";
 		}
