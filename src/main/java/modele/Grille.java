@@ -31,11 +31,38 @@ public class Grille {
 		return false;
 	}
 
+
+	
+	public void apparition_piece(Piece p){
+		int pos_piece[] = p.getiLaPieceTab();
+		int cpt = 0;
+		for (int i = 0;i<=3;i++){
+			for (int j=3;j<=6;j++){
+				iLaGrilleTab[i][j]= pos_piece [cpt];
+				cpt++;
+			}
+		}
+	}
+
+	public void descente_piece(Piece p){
+		
+	}
+	
 	public int[][] getiLaGrilleTab() {
 		return iLaGrilleTab;
 	}
-
+	
 	public void setiLaGrilleTab(int iLaGrilleTab[][]) {
 		this.iLaGrilleTab = iLaGrilleTab;
 	}
+
+	public int getiLignes() {
+		return iLignes;
+	}
+
+	public int getiColonnes() {
+		return iColonnes;
+	}
+	
+	
 }
