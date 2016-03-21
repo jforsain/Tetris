@@ -4,6 +4,9 @@ public abstract class Piece {
 	
 	protected int iPosition;
 	protected int iLaPieceTab[];
+	protected boolean estPlace;
+	protected boolean bouge;
+	
 	
 	public Piece (){
 		
