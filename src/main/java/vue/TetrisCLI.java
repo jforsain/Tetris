@@ -1,5 +1,12 @@
 package vue;
 
-public class TetrisCLI {
 
+public class TetrisCLI {
+	  public TetrisCLI(){
+
+		
+	  }
 }
+
+
+
