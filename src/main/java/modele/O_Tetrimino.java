@@ -16,7 +16,6 @@ public class O_Tetrimino extends Piece{
 	}
 
 	@Override
-
 	public int[] getiLaPieceTab() {
 		return matricePositionsOTetrimino[this.getiPosition()];
 	}
