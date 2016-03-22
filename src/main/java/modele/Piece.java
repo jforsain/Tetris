@@ -11,7 +11,7 @@ public abstract class Piece {
 
 	public Piece (){
 		
-		this.iPosition = 1;
+		this.iPosition = 1 + (int)(Math.random() * ((4 - 1) + 1));;
 		this.coordonnees = new Coordonnees[4][4];
 	}
 

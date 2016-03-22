@@ -16,6 +16,8 @@ public class Grille extends Observable {
 		this.iLignes = pLignes;
 		this.iColonnes = pColonnes;
 		this.iLaGrilleTab = new int[pLignes][pColonnes];
+		this.deltaX = 0;
+		this.deltaY = (int) (pColonnes / 2) - 2;
 		initialisationGrille();
 	}
 	
@@ -31,14 +33,35 @@ public class Grille extends Observable {
 	}
 
 	public void apparition_piece(Piece p){
-		int pos_piece[] = p.getiLaPieceTab();
-		int cpt = 0;
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		
 		for (int i = 0;i<=3;i++){
-			for (int j=3;j<=6;j++){
-				iLaGrilleTab[i][j]= pos_piece [cpt];
-				cpt++;
-			}
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 1;
 		}
+		
+		setChanged();
+		notifyObservers();
+	}
+	
+	public void descendre_piece(Piece p){
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		deltaX++;
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 1;
+		}
+		
 		setChanged();
 		notifyObservers();
 	}

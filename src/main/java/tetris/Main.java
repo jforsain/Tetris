@@ -12,17 +12,21 @@ public class Main {
 		Grille grille = new Grille(20,10);
 		Piece piece = new I_Tetrimino();
 		grille.apparition_piece(piece);
-
+		
 		TetrisGUI testwindow = new TetrisGUI(grille);
 		
 		for (int i = 1; i<10;i++){
 			try{
-				Thread.sleep(500);	
+				Thread.sleep(3000);	
 			}catch (Exception e){
 				e.printStackTrace();
 			}
+			grille.descendre_piece(piece);
+			
+			testwindow.repaint();
 		
 		}
+		
 	}
 	
 }
