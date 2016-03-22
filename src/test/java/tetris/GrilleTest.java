@@ -22,5 +22,4 @@ public class GrilleTest extends TestCase{
 	}
 	
 	
-	
 }
