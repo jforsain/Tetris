@@ -19,11 +19,9 @@ public class TetrisGUI extends JFrame {
 		    this.setLocationRelativeTo(null);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);             
 		    this.setVisible(true);
-		    this.setContentPane(new Grille_panel(grille_courante));
-		
+		    //this.setContentPane(new Grille_panel(grille_courante));
+		    this.add(new Grille_panel(grille_courante));
+
 	  }
 	  
 }
-
-
-

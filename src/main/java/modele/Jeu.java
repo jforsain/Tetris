@@ -17,12 +17,4 @@ public class Jeu {
 		this.niveau = 1;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
 }

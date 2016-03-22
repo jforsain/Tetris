@@ -1,25 +1,26 @@
 package vue;
 
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JPanel;
 import modele.Grille;
 
-public class Grille_panel extends JPanel { 
+public class Grille_panel extends JPanel implements Observer { 
 	private Grille grille_courante ;
 	
 	public Grille_panel (Grille pGrille){
 		this.grille_courante= pGrille;
 	}
 	
-	  public void paintComponent(Graphics g){
+	  public void paint(Graphics g){
 		
 		  int inb_lignes = grille_courante.getiLignes();
 		  int inb_colonnes = grille_courante.getiColonnes();
 		  int la_grille[][] = grille_courante.getiLaGrilleTab();
 		  int larg = this.getWidth();
 		  int haut = this.getHeight();
-		  System.out.println(inb_lignes);
-		  System.out.println(inb_colonnes);
 		  for (int k = 0; k <inb_lignes;k++){
 			  for (int l = 0; l < inb_colonnes;l++){
 				  	
@@ -45,5 +46,12 @@ public class Grille_panel extends JPanel {
 				}
 			}
 		  
-	  }               
+	  }
+
+	public void update(Observable arg0, Object arg1) {
+		if(arg0 instanceof Grille){
+			
+		}
+	}               
+	
 }
