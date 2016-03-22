@@ -3,13 +3,15 @@ package vue;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import modele.Grille;
 
-public class TetrisGUI extends JFrame {
+public class TetrisGUI extends JFrame implements Observer {
 	private Grille grille_courante ;
 	
 	  public TetrisGUI( Grille pGrille){
@@ -23,5 +25,11 @@ public class TetrisGUI extends JFrame {
 		    this.add(new Grille_panel(grille_courante));
 
 	  }
+	  
+	  public void update(Observable obs, Object obj) {
+		  
+			repaint();
+		  
+	}    
 	  
 }

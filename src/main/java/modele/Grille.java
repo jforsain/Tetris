@@ -13,11 +13,11 @@ public class Grille extends Observable {
 	
 	public Grille(int pLignes, int pColonnes) {
 		super();
-		this.iLignes = pLignes;
-		this.iColonnes = pColonnes;
-		this.iLaGrilleTab = new int[pLignes][pColonnes];
+		this.iLignes = pLignes+1;
+		this.iColonnes = pColonnes+2;
+		this.iLaGrilleTab = new int[iLignes][iColonnes];
 		this.deltaX = 0;
-		this.deltaY = (int) (pColonnes / 2) - 2;
+		this.deltaY = 0;
 		initialisationGrille();
 	}
 	
@@ -26,15 +26,26 @@ public class Grille extends Observable {
 		for(int i = 0; i < this.iLignes; i++)
 		{
 			for(int j = 0; j < this.iColonnes; j++)
-			{
-				this.iLaGrilleTab[i][j] = 0;
+			{	
+				if (i == iLignes - 1)
+					iLaGrilleTab[i][j] = 1;
+				else {
+					if (j == 0 || j == iColonnes - 1)
+						this.iLaGrilleTab[i][j] = 1;
+					else
+						this.iLaGrilleTab[i][j] = 0;
+				}
 			}
 		}
+		
+		
 	}
 
 	public void apparition_piece(Piece p){
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();
+		deltaX = 0;
+		deltaY = (int) ((iColonnes-2) / 2) - 2;
 		
 		for (int i = 0;i<=3;i++){
 			int x = coord[iPosition-1][i].getX();
@@ -44,12 +55,10 @@ public class Grille extends Observable {
 
 			iLaGrilleTab[x][y]= 1;
 		}
-		
-		setChanged();
-		notifyObservers();
 	}
 	
 	public void descendre_piece(Piece p){
+		vider_piece_dans_grille(p);
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();
 		deltaX++;
@@ -60,10 +69,59 @@ public class Grille extends Observable {
 			y = y + deltaY;
 
 			iLaGrilleTab[x][y]= 1;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	
+	public void vider_piece_dans_grille(Piece p) {
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 0;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	
+	public Boolean peut_descendre (Piece p){
+		
+		vider_piece_dans_grille(p);
+		Boolean libre = true;
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			if (iLaGrilleTab[x+1][y] == 1)
+				libre = false;
+
 		}
 		
-		setChanged();
-		notifyObservers();
+		return libre;
+	}
+	
+	public void poser_piece(Piece p){
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 1;
+			setChanged();
+			notifyObservers();
+		}
 	}
 
 	public int[][] getiLaGrilleTab() {
