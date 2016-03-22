@@ -6,11 +6,13 @@ public abstract class Piece {
 	protected int iLaPieceTab[];
 	protected boolean estPlace;
 	protected boolean bouge;
+	protected Coordonnees[][] coordonnees;
 	
-	
+
 	public Piece (){
 		
 		this.iPosition = 1;
+		this.coordonnees = new Coordonnees[4][4];
 	}
 
 	public void pivoterGauche()
@@ -60,4 +62,12 @@ public abstract class Piece {
 	}
 
 	public abstract int[] getiLaPieceTab();
+	
+	public Coordonnees[][] getCoordonnees() {
+		return coordonnees;
+	}
+
+	public void setCoordonnees(Coordonnees[][] coordonnees) {
+		this.coordonnees = coordonnees;
+	}
 }

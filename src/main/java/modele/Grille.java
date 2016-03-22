@@ -8,6 +8,8 @@ public class Grille extends Observable {
 	private int iColonnes;
 	private int iLaGrilleTab[][];
 	private Piece pieceCourante;
+	private int deltaX;
+	private int deltaY;
 	
 	public Grille(int pLignes, int pColonnes) {
 		super();
@@ -53,5 +55,20 @@ public class Grille extends Observable {
 		return iColonnes;
 	}
 	
+	public int getDeltaX() {
+		return deltaX;
+	}
+
+	public void setDeltaX(int deltaX) {
+		this.deltaX = deltaX;
+	}
+
+	public int getDeltaY() {
+		return deltaY;
+	}
+
+	public void setDeltaY(int deltaY) {
+		this.deltaY = deltaY;
+	}
 	
 }
