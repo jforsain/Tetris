@@ -10,11 +10,12 @@ public class PieceFactory {
 	public static final int T_TETRIMINO = 6;
 	public static final int Z_TETRIMINO = 7;
 	
-	public Piece getPieceRandom(int numero)
+	public Piece getPieceRandom()
 	{
 		Piece piece = null;
+		int nombreAleatoire = 1 + (int)(Math.random() * ((7 - 1) + 1));
 		
-		switch(numero)
+		switch(nombreAleatoire)
 		{
 			case I_TETRIMINO:
 				piece = new I_Tetrimino();
@@ -38,7 +39,7 @@ public class PieceFactory {
 				piece = new Z_Tetrimino();
 				break;
 			default:
-				throw new IllegalArgumentException("Type de pièce inconnu");
+				throw new IllegalArgumentException("Type de piece inconnu");
 		}
 		
 		return piece;
