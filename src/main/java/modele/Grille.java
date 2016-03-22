@@ -1,6 +1,8 @@
 package modele;
 
-public class Grille {
+import java.util.Observable;
+
+public class Grille extends Observable {
 
 	private int iLignes;
 	private int iColonnes;
@@ -35,6 +37,8 @@ public class Grille {
 				cpt++;
 			}
 		}
+		setChanged();
+		notifyObservers();
 	}
 
 	public int[][] getiLaGrilleTab() {
