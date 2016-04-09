@@ -74,6 +74,40 @@ public class Grille extends Observable {
 		}
 	}
 	
+	public void decaler_droite(Piece p) {
+		vider_piece_dans_grille(p);
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		deltaY++;
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 1;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	
+	public void decaler_gauche(Piece p) {
+		vider_piece_dans_grille(p);
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		deltaY--;
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 1;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	
 	public void vider_piece_dans_grille(Piece p) {
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();

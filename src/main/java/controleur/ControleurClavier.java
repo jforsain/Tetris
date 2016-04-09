@@ -1,5 +1,7 @@
 package controleur;
 
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -8,28 +10,35 @@ import javax.swing.JFrame;
 import modele.Piece;
 import modele.Grille;
 
-public class ControleurClavier extends JFrame implements KeyListener{
+public class ControleurClavier extends JFrame{
 	private Grille grille_courante ;
 	private Piece piece_courante ;
 	
 	public ControleurClavier(Grille pGrille, Piece pPiece){
 		this.grille_courante = pGrille ;
 		this.piece_courante = pPiece;
-		 addKeyListener (this);
+		 KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+	        manager.addKeyEventDispatcher(new MyDispatcher());
 	}
 	
-	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyCode()) {
-			case KeyEvent.VK_LEFT : 
-				piece_courante.pivoterGauche();
-				System.out.println("gauche");
-				
-				break;
-			case KeyEvent.VK_RIGHT : 
-				piece_courante.pivoterDroit();
-				System.out.println("droite");
-				
-				break;}
+	private class MyDispatcher implements KeyEventDispatcher {
+        public boolean dispatchKeyEvent(KeyEvent e) {
+            if (e.getID() == KeyEvent.KEY_PRESSED) {
+            	switch (e.getKeyCode()) {
+    			case KeyEvent.VK_LEFT : 
+    				System.out.println("gauche");
+    				grille_courante.decaler_gauche(piece_courante);
+    				
+    				
+    				break;
+    			case KeyEvent.VK_RIGHT : 
+    				System.out.println("droite");
+    				grille_courante.decaler_droite(piece_courante);
+    				break;}
+        }
+            return false;
+        }
+	
 				/*
 			case KeyEvent.VK_UP : if (p != null) {
 					p.tourned(grille);

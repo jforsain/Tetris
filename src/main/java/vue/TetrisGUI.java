@@ -16,7 +16,7 @@ public class TetrisGUI extends JFrame implements Observer {
 	
 	  public TetrisGUI( Grille pGrille){
 			this.grille_courante= pGrille;
-		    this.setTitle("Ma première fenêtre Java");
+		    this.setTitle("TETRIS");
 		    this.setSize(400, 800);
 		    this.setLocationRelativeTo(null);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);             

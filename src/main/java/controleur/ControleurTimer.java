@@ -26,7 +26,7 @@ public class ControleurTimer {
 		
 		for (int i = 1; i<1000;i++){
 			try{
-				Thread.sleep(100);	
+				Thread.sleep(500);	
 			}catch (Exception e){
 				e.printStackTrace();
 			}
