@@ -52,6 +52,17 @@ public class ControleurClavier extends JFrame {
 					} else
 						System.out.println("PIVOT : ECHEC");
 					break;
+					
+				case KeyEvent.VK_DOWN:
+					while (grille_courante.peut_descendre(piece_courante)){
+						grille_courante.descendre_piece(piece_courante);
+						
+					}
+					
+					grille_courante.poser_piece(piece_courante);
+					
+					break;
+					
 				}
 			}
 			return false;
