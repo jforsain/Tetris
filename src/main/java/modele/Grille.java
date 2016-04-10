@@ -56,7 +56,7 @@ public class Grille extends Observable {
 			setChanged();
 			notifyObservers();
 		}
-		
+		/*
 		for (int i=0; i<iLignes;i++){
 			for (int j=0; j<iColonnes; j++) {
 				System.out.print(iLaGrilleTab[i][j]);
@@ -65,7 +65,7 @@ public class Grille extends Observable {
 		}
 		
 		System.out.println(deltaX);
-		System.out.println(deltaY);
+		System.out.println(deltaY);*/
 
 	}
 	
@@ -231,13 +231,19 @@ public class Grille extends Observable {
 			x = x + deltaX;
 			int y = coord[iPosition-1][i].getY();
 			y = y + deltaY;
-	
-			if (iLaGrilleTab[x][y] == 1)
+			System.out.println(x + " " + y);
+			if (x > iLignes-1 || y > iColonnes-1) {
+				libre = false;
+			}
+			else if (iLaGrilleTab[x][y] == 1)
 			{
 				libre = false;
 			}
 		}
-		
+		if (!libre)
+		{
+			p.pivoterGauche();
+		}
 		rafraichir_grille(p);
 		return libre;
 	}

@@ -17,6 +17,7 @@ public abstract class Piece {
 
 	public void pivoterGauche()
 	{
+		
 		switch(this.iPosition)
 		{
 		case 1:
@@ -32,6 +33,7 @@ public abstract class Piece {
 			setiPosition(1);
 			break;
 		}
+		
 	}
 	
 	public void pivoterDroit()
@@ -50,6 +52,7 @@ public abstract class Piece {
 		case 4:
 			setiPosition(3);
 			break;
+		
 		}
 	}
 	
