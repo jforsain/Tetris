@@ -31,7 +31,7 @@ public class ControleurTimer {
 				e.printStackTrace();
 			}
 			if (grille.peut_descendre(piece))
-			grille.descendre_piece(piece);
+				grille.descendre_piece(piece);
 			else {
 				grille.poser_piece(piece);
 				piece = pf.getPieceRandom();
