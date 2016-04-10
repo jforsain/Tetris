@@ -36,6 +36,7 @@ public class ControleurTimer {
 				grille.poser_piece(piece);
 				piece = pf.getPieceRandom();
 				grille.apparition_piece(piece);
+				clavier.set_piece(piece);
 			}
 		
 		}

@@ -61,5 +61,12 @@ public class ControleurClavier extends JFrame{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void set_piece(Piece p){
+		this.piece_courante = p;
+	}
 
+	public void set_grille(Grille g){
+		this.grille_courante = g;
+	}
 }

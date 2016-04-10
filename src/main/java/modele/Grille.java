@@ -54,6 +54,8 @@ public class Grille extends Observable {
 			y = y + deltaY;
 
 			iLaGrilleTab[x][y]= 1;
+			setChanged();
+			notifyObservers();
 		}
 	}
 	
@@ -118,8 +120,6 @@ public class Grille extends Observable {
 			y = y + deltaY;
 
 			iLaGrilleTab[x][y]= 0;
-			setChanged();
-			notifyObservers();
 		}
 	}
 	
@@ -144,6 +144,7 @@ public class Grille extends Observable {
 	}
 	
 	public void poser_piece(Piece p){
+		System.out.println("poser_piece");
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();
 		for (int i = 0;i<=3;i++){
