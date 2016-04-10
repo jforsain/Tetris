@@ -27,17 +27,28 @@ public class ControleurClavier extends JFrame{
             	switch (e.getKeyCode()) {
     			case KeyEvent.VK_LEFT : 
     				System.out.println("gauche");
-    				grille_courante.decaler_gauche(piece_courante);
-    				
-    				
+    				if(grille_courante.peut_aller_a_gauche(piece_courante))
+    				{
+    					System.out.println("tu peux aller à gauche");
+    					grille_courante.decaler_gauche(piece_courante);
+    				}
+    				else
+    					System.out.println("tu peux pas aller à gauche");
     				break;
+    				
     			case KeyEvent.VK_RIGHT : 
-    				System.out.println("droite");
-    				grille_courante.decaler_droite(piece_courante);
-    				break;}
-        }
-            return false;
-        }
+    				if(grille_courante.peut_aller_a_droite(piece_courante))
+    				{
+    					System.out.println("tu peux aller à droite");
+    					grille_courante.decaler_droite(piece_courante);
+    				}
+    				else
+    					System.out.println("tu peux pas aller à droite");
+    				break;
+            	}
+            }
+        return false;
+    }
 	
 				/*
 			case KeyEvent.VK_UP : if (p != null) {

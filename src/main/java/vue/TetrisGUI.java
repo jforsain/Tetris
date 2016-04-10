@@ -27,9 +27,8 @@ public class TetrisGUI extends JFrame implements Observer {
 	  }
 	  
 	  public void update(Observable obs, Object obj) {
-		  
-			repaint();
-		  
+		 
+			repaint(); 
 	}    
 	  
 }

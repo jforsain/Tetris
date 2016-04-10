@@ -121,8 +121,11 @@ public class Grille extends Observable {
 	}
 	
 	public void vider_piece_dans_grille(Piece p) {
+		// On récupère les coordonnées de la pièce
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();
+		
+		// 
 		for (int i = 0;i<=3;i++){
 			int x = coord[iPosition-1][i].getX();
 			x = x + deltaX;
@@ -133,6 +136,7 @@ public class Grille extends Observable {
 		}
 	}
 	
+	/* Vérifie si on peut déplacer la pièce en bas*/
 	public Boolean peut_descendre (Piece p){
 		
 		vider_piece_dans_grille(p);
@@ -147,9 +151,47 @@ public class Grille extends Observable {
 
 			if (iLaGrilleTab[x+1][y] == 1)
 				libre = false;
-
 		}
 		
+		return libre;
+	}
+	
+	/* Vérifie si on peut déplacer la pièce à gauche */
+	public Boolean peut_aller_a_gauche (Piece p){
+		
+		vider_piece_dans_grille(p);
+		Boolean libre = true;
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			if (iLaGrilleTab[x][y-1] == 1)
+				libre = false;
+		}
+		
+		return libre;
+	}
+	
+	/* Vérifie si on peut déplacer la pièce à droite */
+	public Boolean peut_aller_a_droite (Piece p){
+		
+		vider_piece_dans_grille(p);
+		Boolean libre = true;
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+	
+			if (iLaGrilleTab[x+1][y+1] == 1)
+				libre = false;
+		}
 		return libre;
 	}
 	
