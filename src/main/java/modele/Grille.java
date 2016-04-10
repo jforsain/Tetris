@@ -120,6 +120,24 @@ public class Grille extends Observable {
 		}
 	}
 	
+	public void pivoter(Piece p)
+	{
+		vider_piece_dans_grille(p);
+		Coordonnees coord[][] = p.getCoordonnees();
+		p.pivoterDroit();
+		int iPosition = p.getiPosition();
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+
+			iLaGrilleTab[x][y]= 1;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	
 	public void vider_piece_dans_grille(Piece p) {
 		// On récupère les coordonnées de la pièce
 		Coordonnees coord[][] = p.getCoordonnees();
@@ -189,10 +207,37 @@ public class Grille extends Observable {
 			int y = coord[iPosition-1][i].getY();
 			y = y + deltaY;
 	
-			if (iLaGrilleTab[x+1][y+1] == 1)
+			if (iLaGrilleTab[x][y+1] == 1)
 				libre = false;
 		}
 		return libre;
+	}
+	
+	/* Verifie si piece peut pivoter */
+	public Boolean peut_pivoter(Piece p)
+	{	
+		boolean libre = true;
+		vider_piece_dans_grille(p);
+		Coordonnees coord[][] = p.getCoordonnees();
+		/* On met à jour la position de la piece */
+		p.pivoterDroit();
+		int iPosition = p.getiPosition();
+		
+		for (int i = 0;i<=3;i++){
+			int x = coord[iPosition-1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition-1][i].getY();
+			y = y + deltaY;
+	
+			if (iLaGrilleTab[x][y] == 1)
+			{
+				libre = false;
+				p.pivoterGauche();
+			}
+		}
+		return libre;
+		
+		
 	}
 	
 	public void poser_piece(Piece p){
