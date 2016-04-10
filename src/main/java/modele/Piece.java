@@ -54,7 +54,7 @@ public abstract class Piece {
 	}
 	
 	public int getiPosition() {
-		return iPosition;
+		return this.iPosition;
 	}
 
 	public void setiPosition(int iPosition) {
