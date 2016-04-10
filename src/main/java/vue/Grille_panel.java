@@ -22,23 +22,19 @@ public class Grille_panel extends JPanel {
 		  int larg = this.getWidth();
 		  int haut = this.getHeight();
 		
-		  /*
 		  for (int i=0;i<=inb_lignes-1;i++){
-		    g.drawLine(i*haut/(inb_lignes-1), 0, i*haut/(inb_lignes-1), larg);
+			  g.drawLine(0, i*haut/(inb_lignes-1), larg, i*haut/(inb_lignes-1));
 		  }
-		  for (int j=0;j<=inb_colonnes-1;j++){
-			    g.drawLine(0, j*larg/(inb_colonnes-2), haut, j*larg/(inb_colonnes-2));
+		  for (int j=0;j<=inb_colonnes-2;j++){
+			  g.drawLine(j*larg/(inb_colonnes-2), 0, j*larg/(inb_colonnes-2), haut);
 		  }
-		  */
+		  
 		  for (int i = 0;i<inb_lignes-1;i++){
-				for (int j=1;j<inb_colonnes-1;j++){
-					if (la_grille[i][j]==1){
+				for (int j=0;j<inb_colonnes-2;j++){
+					if (la_grille[i][j+1]==1){
 					//g.draw3DRect(i*haut/inb_lignes, i*larg/inb_colonnes, larg/inb_colonnes, haut/inb_lignes, true);
-					g.draw3DRect(j*larg/inb_colonnes, i*haut/inb_lignes, larg/inb_colonnes, haut/inb_lignes,false);
-					g.fill3DRect(j*larg/inb_colonnes, i*haut/inb_lignes, larg/inb_colonnes, haut/inb_lignes,false);
-					}
-					else {
-						g.drawRect(j*larg/inb_colonnes, i*haut/inb_lignes, larg/inb_colonnes, haut/inb_lignes);
+					g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+					g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
 					}
 				}
 			}

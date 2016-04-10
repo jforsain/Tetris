@@ -127,6 +127,7 @@ public class Grille extends Observable {
 		System.out.println(p.getiPosition());
 		p.pivoterDroit();
 		System.out.println(p.getiPosition());
+
 		int iPosition = p.getiPosition();
 		for (int i = 0;i<=3;i++){
 			int x = coord[iPosition-1][i].getX();

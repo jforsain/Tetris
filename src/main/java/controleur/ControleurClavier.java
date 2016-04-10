@@ -48,6 +48,7 @@ public class ControleurClavier extends JFrame {
 					if (grille_courante.peut_pivoter(piece_courante)) {
 						System.out.println("PIVOT : OK");
 //						grille_courante.pivoter(piece_courante);
+
 					} else
 						System.out.println("PIVOT : ECHEC");
 					break;
@@ -70,6 +71,7 @@ public class ControleurClavier extends JFrame {
 
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+
 	}
 
 	public void set_piece(Piece p) {
