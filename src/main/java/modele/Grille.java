@@ -38,7 +38,6 @@ public class Grille extends Observable {
 			}
 		}
 		
-		
 	}
 
 	public void apparition_piece(Piece p){
@@ -57,6 +56,17 @@ public class Grille extends Observable {
 			setChanged();
 			notifyObservers();
 		}
+		
+		for (int i=0; i<iLignes;i++){
+			for (int j=0; j<iColonnes; j++) {
+				System.out.print(iLaGrilleTab[i][j]);
+			}
+			System.out.println();
+		}
+		
+		System.out.println(deltaX);
+		System.out.println(deltaY);
+
 	}
 	
 	public void descendre_piece(Piece p){
