@@ -7,17 +7,20 @@ import modele.Grille;
 import modele.PieceFactory;
 import vue.TetrisGUI;
 import modele.Piece;
+import modele.Jeu;
 
 
 public class ControleurTimer {
 	
 	static int temps_descente;
+	static int niveau;
 	private boolean jeu_en_cours;
 	private Timer timer;
 	
 	public ControleurTimer(){
 		temps_descente = 1000;
 		jeu_en_cours = true;
+		niveau = 1;
 	}
 	
 	
@@ -40,13 +43,14 @@ public class ControleurTimer {
 	public void lancer_jeu(Grille grille, Piece piece){
 		PieceFactory pf = new PieceFactory();
 		ControleurClavier clavier = new ControleurClavier(grille, piece);
-		
+		Jeu jeu = new Jeu();
+		Accelerer accelerer = new Accelerer(jeu); 
 		timer = new Timer();
-	    timer.schedule(new accelerer(), 0, 30000);
+	    timer.schedule(accelerer, 0, 30000);
 	    
 		while (jeu_en_cours){
 			try{
-				Thread.sleep(temps_descente);	
+				Thread.sleep(jeu.get_temps_descente());	
 			}catch (Exception e){
 				e.printStackTrace();
 			}
