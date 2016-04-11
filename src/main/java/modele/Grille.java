@@ -37,11 +37,31 @@ public class Grille extends Observable {
 
 	}
 
+	public boolean peut_apparaitre(Piece p){
+
+		deltaX = 0;
+		deltaY = (int) ((iColonnes - 2) / 2) - 1;
+		boolean libre = true;
+		Coordonnees coord[][] = p.getCoordonnees();
+		int iPosition = p.getiPosition();
+		for (int i = 0; i <= 3; i++) {
+			int x = coord[iPosition - 1][i].getX();
+			x = x + deltaX;
+			int y = coord[iPosition - 1][i].getY();
+			y = y + deltaY;
+			
+			if (iLaGrilleTab[x][y] == 1)
+				libre = false;
+		}
+		return libre;
+		
+	}
+	
 	public void apparition_piece(Piece p) {
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();
 		deltaX = 0;
-		deltaY = (int) ((iColonnes - 2) / 2) - 2;
+		deltaY = (int) ((iColonnes - 2) / 2) - 1;
 
 		for (int i = 0; i <= 3; i++) {
 			int x = coord[iPosition - 1][i].getX();

@@ -1,6 +1,8 @@
 package controleur;
 
 import java.util.Timer;
+import java.util.TimerTask;
+
 import modele.Grille;
 import modele.PieceFactory;
 import vue.TetrisGUI;
@@ -9,8 +11,17 @@ import modele.Piece;
 
 public class ControleurTimer {
 	
-
+	static int temps_descente;
+	private boolean jeu_en_cours;
+	private Timer timer;
+	
 	public ControleurTimer(){
+		temps_descente = 1000;
+		jeu_en_cours = true;
+	}
+	
+	
+	public void initialiser_jeu(){
 		Grille grille = new Grille(20,10);
 		PieceFactory pf = new PieceFactory();
 		
@@ -22,11 +33,20 @@ public class ControleurTimer {
 		
 		grille.addObserver(affich_tetris);
 		
+	    lancer_jeu(grille,piece);
+	    
+	}
+	
+	public void lancer_jeu(Grille grille, Piece piece){
+		PieceFactory pf = new PieceFactory();
 		ControleurClavier clavier = new ControleurClavier(grille, piece);
 		
-		for (int i = 1; i<1000;i++){
+		timer = new Timer();
+	    timer.schedule(new accelerer(), 0, 30000);
+	    
+		while (jeu_en_cours){
 			try{
-				Thread.sleep(500);	
+				Thread.sleep(temps_descente);	
 			}catch (Exception e){
 				e.printStackTrace();
 			}
@@ -36,12 +56,20 @@ public class ControleurTimer {
 				grille.poser_piece(piece);
 				grille.ligne_completee();
 				piece = pf.getPieceRandom();
-				grille.apparition_piece(piece);
-				clavier.set_piece(piece);
+				
+				if (grille.peut_apparaitre(piece)){
+					grille.apparition_piece(piece);
+					clavier.set_piece(piece);	
+				}
+				
+				else {
+					System.out.println("GAME OVER");
+					jeu_en_cours = false;
+				}
 			}
 		
 		}
 	}
-	
-	
+		
+
 }

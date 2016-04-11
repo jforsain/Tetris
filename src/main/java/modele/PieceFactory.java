@@ -33,7 +33,7 @@ public class PieceFactory {
 				piece = new S_Tetrimino();
 				break;
 			case T_TETRIMINO:
-				piece = new I_Tetrimino();
+				piece = new T_Tetrimino();
 				break;
 			case Z_TETRIMINO:
 				piece = new Z_Tetrimino();
