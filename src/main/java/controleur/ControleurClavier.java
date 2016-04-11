@@ -3,7 +3,6 @@ package controleur;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
@@ -25,64 +24,43 @@ public class ControleurClavier extends JFrame {
 	private class MyDispatcher implements KeyEventDispatcher {
 		public boolean dispatchKeyEvent(KeyEvent e) {
 			if (e.getID() == KeyEvent.KEY_PRESSED) {
-				switch (e.getKeyCode()) {
 				
-				case KeyEvent.VK_LEFT:
-					System.out.println("gauche");
-					if (grille_courante.peut_aller_a_gauche(piece_courante)) {
-						System.out.println("Aller a gauche : OK");
-						grille_courante.decaler_gauche(piece_courante);
-					} else
-						System.out.println("Aller a gauche : ECHEC");
-					break;
+				switch (e.getKeyCode()) {
 
-				case KeyEvent.VK_RIGHT:
-					if (grille_courante.peut_aller_a_droite(piece_courante)) {
-						System.out.println("Aller a droite : OK");
-						grille_courante.decaler_droite(piece_courante);
-					} else
-						System.out.println("Aller a droite : ECHEC");
-					break;
-					
-				case KeyEvent.VK_UP:
-					if (grille_courante.peut_pivoter(piece_courante)) {
-						System.out.println("PIVOT : OK");
-//						grille_courante.pivoter(piece_courante);
-
-					} else
-						System.out.println("PIVOT : ECHEC");
-					break;
-					
-				case KeyEvent.VK_DOWN:
-					while (grille_courante.peut_descendre(piece_courante)){
-						grille_courante.descendre_piece(piece_courante);
-						
-					}
-					
-					grille_courante.poser_piece(piece_courante);
-					
-					break;
-					
+					case KeyEvent.VK_LEFT:
+						System.out.println("gauche");
+						if (grille_courante.peut_aller_a_gauche(piece_courante)) {
+							System.out.println("Aller a gauche : OK");
+							grille_courante.decaler_gauche(piece_courante);
+						} else
+							System.out.println("Aller a gauche : ECHEC");
+						break;
+	
+					case KeyEvent.VK_RIGHT:
+						if (grille_courante.peut_aller_a_droite(piece_courante)) {
+							System.out.println("Aller a droite : OK");
+							grille_courante.decaler_droite(piece_courante);
+						} else
+							System.out.println("Aller a droite : ECHEC");
+						break;
+	
+					case KeyEvent.VK_UP:
+						if (grille_courante.peut_pivoter(piece_courante)) {
+							System.out.println("PIVOT : OK");
+						} else
+							System.out.println("PIVOT : ECHEC");
+						break;
+	
+					case KeyEvent.VK_DOWN:
+						while (grille_courante.peut_descendre(piece_courante)) {
+							grille_courante.descendre_piece(piece_courante);
+						}
+						grille_courante.rafraichir_grille(piece_courante);
+						break;
 				}
 			}
 			return false;
 		}
-
-		/*
-		 * case KeyEvent.VK_UP : if (p != null) { p.tourned(grille); repaint();
-		 * } case KeyEvent.VK_DOWN : if (p != null) { p.descend(grille);
-		 * repaint(); } break;
-		 */
-		// default : repaint();
-	}
-
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-	}
-
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void set_piece(Piece p) {
