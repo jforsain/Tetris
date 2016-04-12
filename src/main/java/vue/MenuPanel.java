@@ -5,8 +5,8 @@ import javax.swing.JPanel;
 
 public class MenuPanel extends JPanel{
 	
-	private JButton oneplayer = new JButton("Player 1");
-	private JButton twoplayers = new JButton("Player 2");
+	private JButton oneplayer = new JButton("Tapez 'a' pour jouer en solo");
+	private JButton twoplayers = new JButton("Tapez 'b' pour jouer en multijoueurs");
 	
 	public MenuPanel()
 	{

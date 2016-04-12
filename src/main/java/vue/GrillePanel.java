@@ -27,7 +27,6 @@ public class GrillePanel extends JPanel {
 	
 	  public void paint(Graphics g){
 
-		  System.out.println("pa");
 		  int inb_lignes = grille_courante.getiLignes();
 		  int inb_colonnes = grille_courante.getiColonnes();
 		  int la_grille[][] = grille_courante.getiLaGrilleTab();

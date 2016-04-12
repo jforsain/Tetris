@@ -27,13 +27,13 @@ public class TetrisGUI extends JFrame implements Observer {
 		this.setSize(400, 800);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.add(menuPanel, BorderLayout.CENTER);
+		this.add(menuPanel);
 		this.setVisible(true);
 	}
 	
 	public void update(Observable obs, Object obj) {
 
-		grillePanel.repaint();
+		repaint();
 	}
 	
 	public void InitialiserGrillePanel ()
