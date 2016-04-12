@@ -1,9 +1,6 @@
 package modele;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Observable;
-import javax.swing.Timer;
 
 public class TetrisModele extends Observable {
 
@@ -12,15 +9,7 @@ public class TetrisModele extends Observable {
 	private Piece piece;
 
 	public TetrisModele() {
-		
-	}
-
-	public boolean getEnCours() {
-		return this.enCours;
-	}
-
-	public void changeState() {
-		setChanged();
+		this.jeu = new Jeu();
 	}
 	
 	public Grille getGrille() {
