@@ -2,7 +2,6 @@ package modele;
 
 public class Jeu {
 	
-	private Grille grille;
 	private int lignesCompletees;
 	private int score;
 	private boolean enPause;

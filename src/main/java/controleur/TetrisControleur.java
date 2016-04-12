@@ -9,12 +9,12 @@ import java.util.Timer;
 import vue.TetrisGUI;
 import modele.TetrisModele;
 
-public class Controleur implements ActionListener, KeyListener{
+public class TetrisControleur implements ActionListener, KeyListener{
 	
 	private TetrisModele modele;
 	private TetrisGUI tetrisGUI;
 	
-	public Controleur(TetrisModele modele, TetrisGUI tetrisGUI) {
+	public TetrisControleur(TetrisModele modele, TetrisGUI tetrisGUI) {
 		super();
 		this.modele = modele;
 		this.tetrisGUI = tetrisGUI;

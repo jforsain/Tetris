@@ -6,13 +6,16 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 import modele.Grille;
+import modele.TetrisModele;
 
 public class TetrisGUI extends JFrame implements Observer {
+	private TetrisModele tetrisModele;
 	private Grille grille_courante;
 	private MenuPanel menuPanel = new MenuPanel();
 	private GrillePanel grillePanel = new GrillePanel(pGrille);
 	
-	public TetrisGUI(Grille pGrille) {
+	public TetrisGUI(TetrisModele modele) {
+		this.tetrisModele = modele;
 		this.grille_courante = pGrille;
 		this.setTitle("TETRIS");
 		this.setSize(400, 800);

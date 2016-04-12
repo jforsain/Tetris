@@ -6,31 +6,40 @@ import java.util.Observable;
 import javax.swing.Timer;
 
 public class TetrisModele extends Observable {
-	
-	private Timer timer;
-	private boolean enCours;
-	ActionListener taskPerformer;
-	
+
+	private Grille grille;
+	private Jeu jeu;
+	private Piece piece;
 
 	public TetrisModele() {
-		this.enCours = false;
-		this.taskPerformer = new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-		timer = new Timer(1000, taskPerformer);
+		
 	}
-	
-	public boolean getEnCours()
-	{
+
+	public boolean getEnCours() {
 		return this.enCours;
 	}
-	
-	public void changeState()
-	{
+
+	public void changeState() {
 		setChanged();
+	}
+	
+	public Grille getGrille() {
+		return this.grille;
+	}
+
+	public void setGrille(int pLignes, int pColonnes) {
+		this.grille = new Grille(pLignes, pColonnes);
+	}
+	
+	public Piece getPiece() {
+		return piece;
+	}
+
+	public void setPiece(Piece piece) {
+		this.piece = piece;
+	}
+
+	public Jeu getJeu() {
+		return jeu;
 	}
 }
