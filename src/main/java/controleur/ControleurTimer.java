@@ -29,7 +29,6 @@ public class ControleurTimer {
 		tetrisModele.setPiece(piece);
 
 		grille.apparition_piece(piece);
-
 		lancer_jeu(grille, piece);
 
 	}
@@ -38,7 +37,9 @@ public class ControleurTimer {
 		PieceFactory pf = new PieceFactory();
 //		ControleurClavier clavier = new ControleurClavier(grille, piece);
 		Jeu jeu = tetrisModele.getJeu();
-
+		
+		jeu.setJeuFini(false);
+		
 		Accelerer accelerer = new Accelerer(jeu);
 		Timer timer = new Timer();
 		timer.schedule(accelerer, 0, 30000); // Acceleration toutes les 30
