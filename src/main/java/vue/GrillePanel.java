@@ -12,10 +12,22 @@ public class GrillePanel extends JPanel {
 	
 	public GrillePanel (Grille pGrille){
 		this.grille_courante= pGrille;
+		
+//		System.out.println("testmat");
+//		for (int i = 0; i<21; i++)
+//		{
+//			for (int j=0 ; j<12; j++)
+//			{
+//				System.out.print(grille_courante.getiLaGrilleTab()[i][j]);
+//			}
+//			System.out.println("");
+//		}
+		
 	}
 	
 	  public void paint(Graphics g){
-		
+
+		  System.out.println("pa");
 		  int inb_lignes = grille_courante.getiLignes();
 		  int inb_colonnes = grille_courante.getiColonnes();
 		  int la_grille[][] = grille_courante.getiLaGrilleTab();

@@ -40,9 +40,21 @@ public class TetrisControleur {
 				case KeyEvent.VK_A:
 					System.out.println("init");
 					modele.setGrille(20, 10); // new Grille(lignes, colonnes)
+					
+//					for (int i = 0; i<21; i++)
+//					{
+//						for (int j=0 ; j<12; j++)
+//						{
+//							System.out.print(modele.getGrille().getiLaGrilleTab()[i][j]);
+//						}
+//						System.out.println("");
+//					}
+					
+
+					tetrisGUI.InitialiserGrillePanel();
+					tetrisGUI.goToGrille();
 					controleurTimer = new ControleurTimer(modele, tetrisGUI);
 					controleurTimer.initialiser_jeu();
-					tetrisGUI.setContentPane();
 					break;	
 			}
 		}

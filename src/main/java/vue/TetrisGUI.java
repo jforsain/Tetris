@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.BorderLayout;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,34 +21,44 @@ public class TetrisGUI extends JFrame implements Observer {
 	
 	public TetrisGUI(TetrisModele modele) {
 		this.tetrisModele = modele;
-		this.grille_courante = modele.getGrille();
-		this.grillePanel = new GrillePanel(grille_courante);
 		
 		/* Paramétrage JFrame */
 		this.setTitle("TETRIS");
 		this.setSize(400, 800);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.add(menuPanel);
+		this.add(menuPanel, BorderLayout.CENTER);
 		this.setVisible(true);
 	}
-
+	
 	public void update(Observable obs, Object obj) {
 
-		repaint();
+		grillePanel.repaint();
 	}
 	
-	public void setContentPane()
+	public void InitialiserGrillePanel ()
 	{
-		if(this.getContentPane().equals(menuPanel))
-		{
-			this.remove(menuPanel);
-			this.setContentPane(grillePanel);
-		}
-		else
-		{
-			this.remove(grillePanel);
-			this.setContentPane(menuPanel);
-		}
+
+		this.grille_courante = tetrisModele.getGrille();
+		this.grillePanel = new GrillePanel(grille_courante);
+		
+	}
+	
+	public void goToGrille()
+	{	
+		this.getContentPane().removeAll();
+		this.add(grillePanel);
+		this.setVisible(true);
+		/*
+		this.getContentPane().remove(menuPanel);
+		this.add(grillePanel);
+		this.invalidate();
+		this.validate();*/
+	}
+	
+	public void goToMenu()
+	{		
+		this.removeAll();
+		this.setContentPane(menuPanel);
 	}
 }

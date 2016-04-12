@@ -22,7 +22,16 @@ public class ControleurTimer {
 	public void initialiser_jeu() {
 		Grille grille = tetrisModele.getGrille();
 		grille.addObserver(tetrisGUI);
-
+		
+//		for (int i = 0; i<21; i++)
+//		{
+//			for (int j=0 ; j<12; j++)
+//			{
+//				System.out.print(grille.getiLaGrilleTab()[i][j]);
+//			}
+//			System.out.println("");
+//		}
+//		
 		PieceFactory pf = new PieceFactory();
 
 		Piece piece = pf.getPieceRandom();
@@ -51,8 +60,10 @@ public class ControleurTimer {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			System.out.println("test");
 			if (grille.peut_descendre(piece))
 				grille.descendre_piece(piece);
+			
 			else {
 				grille.poser_piece(piece);
 				grille.ligne_completee();
