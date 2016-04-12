@@ -3,38 +3,35 @@ package controleur;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import modele.Grille;
-import modele.PieceFactory;
 import vue.TetrisGUI;
-import modele.Piece;
+import modele.Grille;
 import modele.Jeu;
+import modele.Piece;
+import modele.PieceFactory;
+import modele.TetrisModele;
 
 
 public class ControleurTimer {
 	
-	static int temps_descente;
-	static int niveau;
-	private boolean jeu_en_cours;
-	private Timer timer;
+	private TetrisModele tetrisModele;
+	private TetrisGUI tetrisGUI;
 	
-	public ControleurTimer(){
-		temps_descente = 1000;
-		jeu_en_cours = true;
-		niveau = 1;
+	public ControleurTimer(TetrisModele tetrisModele, TetrisGUI tetrisGUI){
+		this.tetrisModele = tetrisModele ;
+		this.tetrisGUI = tetrisGUI;
 	}
 	
 	
 	public void initialiser_jeu(){
-		Grille grille = new Grille(20,10);
+		Grille grille = tetrisModele.getGrille();
+		grille.addObserver(tetrisGUI);
+		
 		PieceFactory pf = new PieceFactory();
 		
 		Piece piece = pf.getPieceRandom();
+		tetrisModele.setPiece(piece);
 		
 		grille.apparition_piece(piece);
-		
-		TetrisGUI affich_tetris = new TetrisGUI(grille);
-		
-		grille.addObserver(affich_tetris);
 		
 	    lancer_jeu(grille,piece);
 	    
@@ -43,12 +40,14 @@ public class ControleurTimer {
 	public void lancer_jeu(Grille grille, Piece piece){
 		PieceFactory pf = new PieceFactory();
 		ControleurClavier clavier = new ControleurClavier(grille, piece);
-		Jeu jeu = new Jeu();
+		Jeu jeu = tetrisModele.getJeu();
+
+		
 		Accelerer accelerer = new Accelerer(jeu); 
-		timer = new Timer();
-	    timer.schedule(accelerer, 0, 30000);
+		Timer timer = new Timer();
+	    timer.schedule(accelerer, 0, 30000); //Acceleration toutes les 30 secondes
 	    
-		while (jeu_en_cours){
+		while (jeu.get_jeuFini){
 			try{
 				Thread.sleep(jeu.get_temps_descente());	
 			}catch (Exception e){
@@ -68,7 +67,7 @@ public class ControleurTimer {
 				
 				else {
 					System.out.println("GAME OVER");
-					jeu_en_cours = false;
+					jeu.set_jeuFini (true);
 				}
 			}
 		

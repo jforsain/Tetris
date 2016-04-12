@@ -13,8 +13,6 @@ public class Main {
 		TetrisGUI tetrisGUI = new TetrisGUI(modele);
 		TetrisControleur controleur = new TetrisControleur(modele, tetrisGUI);
 
-		ControleurTimer ct = new ControleurTimer();
-		ct.initialiser_jeu();
 	}
 	
 }
