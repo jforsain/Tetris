@@ -10,7 +10,6 @@ import java.util.Timer;
 
 import javax.swing.JFrame;
 
-import controleur.ControleurClavier.MyDispatcher;
 import vue.TetrisGUI;
 import modele.TetrisModele;
 
@@ -34,15 +33,16 @@ public class TetrisControleur {
 		public boolean dispatchKeyEvent(KeyEvent e) {
 			if (e.getID() == KeyEvent.KEY_PRESSED) {
 		// TODO Auto-generated method stub
-		if(this.modele.getJeu().isJeuFini())
+		if(modele.getJeu().isJeuFini())
 		{
 			switch(e.getKeyCode())
 			{
 				case KeyEvent.VK_A:
-					this.modele.setGrille(20, 10); // new Grille(lignes, colonnes)
-					this.controleurTimer = new ControleurTimer(modele, tetrisGUI);
-					this.controleurTimer.initialiser_jeu();
-					this.tetrisGUI.setContentPane();
+					System.out.println("init");
+					modele.setGrille(20, 10); // new Grille(lignes, colonnes)
+					controleurTimer = new ControleurTimer(modele, tetrisGUI);
+					controleurTimer.initialiser_jeu();
+					tetrisGUI.setContentPane();
 					break;	
 			}
 		}
@@ -52,51 +52,39 @@ public class TetrisControleur {
 
 			case KeyEvent.VK_LEFT:
 				System.out.println("gauche");
-				if (this.modele.getGrille().peut_aller_a_gauche(this.modele.getPiece())) {
+				if (modele.getGrille().peut_aller_a_gauche(modele.getPiece())) {
 					System.out.println("Aller a gauche : OK");
-					this.modele.getGrille().decaler_gauche(this.modele.getPiece());
+					modele.getGrille().decaler_gauche(modele.getPiece());
 				} else
 					System.out.println("Aller a gauche : ECHEC");
 				break;
 
 			case KeyEvent.VK_RIGHT:
-				if (this.modele.getGrille().peut_aller_a_droite(this.modele.getPiece())) {
+				if (modele.getGrille().peut_aller_a_droite(modele.getPiece())) {
 					System.out.println("Aller a droite : OK");
-					this.modele.getGrille().decaler_droite(this.modele.getPiece());
+					modele.getGrille().decaler_droite(modele.getPiece());
 				} else
 					System.out.println("Aller a droite : ECHEC");
 				break;
 
 			case KeyEvent.VK_UP:
-				if (this.modele.getGrille().peut_pivoter(this.modele.getPiece())) {
+				if (modele.getGrille().peut_pivoter(modele.getPiece())) {
 					System.out.println("PIVOT : OK");
 				} else
 					System.out.println("PIVOT : ECHEC");
 				break;
 
 			case KeyEvent.VK_DOWN:
-				while (this.modele.getGrille().peut_descendre(this.modele.getPiece())) {
-					this.modele.getGrille().descendre_piece(this.modele.getPiece());
+				while (modele.getGrille().peut_descendre(modele.getPiece())) {
+					modele.getGrille().descendre_piece(modele.getPiece());
 				}
-				this.modele.getGrille().rafraichir_grille(this.modele.getPiece());
+				modele.getGrille().rafraichir_grille(modele.getPiece());
 				break;
 			}
 		}
+	}
+	return false;
+	}
 		
-	}
-
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+}
 }

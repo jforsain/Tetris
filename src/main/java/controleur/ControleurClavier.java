@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import modele.Piece;
 import modele.Grille;
 
-public class ControleurClavier extends JFrame {
+public class ControleurClavier {
 	private Grille grille_courante;
 	private Piece piece_courante;
 

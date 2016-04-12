@@ -11,7 +11,7 @@ public class Jeu {
 	private int temps_descente;
 	
 	public Jeu() {
-		this.jeuFini = false;
+		this.jeuFini = true;
 		this.score = 0;
 		this.lignesCompletees = 0;
 		this.niveau = 1;
