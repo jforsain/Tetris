@@ -1,26 +1,34 @@
 package vue;
 
-import java.awt.BorderLayout;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import modele.Grille;
 import modele.TetrisModele;
 
 public class TetrisGUI extends JFrame implements Observer {
 	
+	/* La vue connait le modèle */
 	private TetrisModele tetrisModele;
+	
 	private Grille grille_courante;
 	
-	/* Panels */ 
+	/* Panels */
+	private JSplitPane fullTetrisPanel;
 	private MenuPanel menuPanel = new MenuPanel();
 	private GrillePanel grillePanel;
+	private StatsPanel statsPanel;
 	
 	public TetrisGUI(TetrisModele modele) {
-		this.tetrisModele = modele;
+		this.tetrisModele = modele; // Liaison Vue - Modele
+		
+		// Initialisation Panels
+		this.grillePanel = new GrillePanel(pGrille);
+		this.statsPanel = new StatsPanel();
+		this.fullTetrisPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.grillePanel, this.statsPanel);
 		
 		/* Paramétrage JFrame */
 		this.setTitle("TETRIS");
@@ -49,11 +57,6 @@ public class TetrisGUI extends JFrame implements Observer {
 		this.getContentPane().removeAll();
 		this.add(grillePanel);
 		this.setVisible(true);
-		/*
-		this.getContentPane().remove(menuPanel);
-		this.add(grillePanel);
-		this.invalidate();
-		this.validate();*/
 	}
 	
 	public void goToMenu()
