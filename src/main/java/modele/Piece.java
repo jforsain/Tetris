@@ -7,6 +7,7 @@ public abstract class Piece {
 	protected boolean estPlace;
 	protected boolean bouge;
 	protected Coordonnees[][] coordonnees;
+	protected int iCouleur;
 	
 
 	public Piece (){
@@ -72,5 +73,10 @@ public abstract class Piece {
 
 	public void setCoordonnees(Coordonnees[][] coordonnees) {
 		this.coordonnees = coordonnees;
+	}
+	
+	public int getiCouleur ()
+	{
+		return this.iCouleur;
 	}
 }

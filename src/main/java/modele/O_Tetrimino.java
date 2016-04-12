@@ -13,6 +13,7 @@ public class O_Tetrimino extends Piece{
 	public O_Tetrimino() {
 		super();
 		this.couleur = Couleur.JAUNE;
+		iCouleur = 4;
 		initialisationCoordonnees();
 	}
 	
@@ -53,5 +54,4 @@ public class O_Tetrimino extends Piece{
 	public int[] getiLaPieceTab() {
 		return matricePositionsOTetrimino[this.getiPosition()];
 	}
-
 }

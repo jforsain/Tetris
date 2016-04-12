@@ -13,6 +13,7 @@ public class Z_Tetrimino extends Piece{
 	public Z_Tetrimino() {
 		super();
 		this.couleur = Couleur.VERT;
+		iCouleur = 7;
 		initialisationCoordonnees();
 	}
 	
@@ -53,5 +54,4 @@ public class Z_Tetrimino extends Piece{
 	public int[] getiLaPieceTab() {
 		return matricePositionsZTetrimino[this.getiPosition()];
 	}
-
 }

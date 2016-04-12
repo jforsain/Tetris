@@ -13,6 +13,7 @@ public class I_Tetrimino extends Piece{
 	public I_Tetrimino() {
 		super();
 		this.couleur = Couleur.CYAN;
+		iCouleur = 1;
 		initialisationCoordonnees();
 	}
 

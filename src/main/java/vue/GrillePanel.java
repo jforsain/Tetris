@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,11 +33,68 @@ public class GrillePanel extends JPanel {
 		  
 		  for (int i = 0;i<inb_lignes-1;i++){
 				for (int j=0;j<inb_colonnes-2;j++){
-					if (la_grille[i][j+1]==1){
-					//g.draw3DRect(i*haut/inb_lignes, i*larg/inb_colonnes, larg/inb_colonnes, haut/inb_lignes, true);
-					g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
-					g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+					switch (la_grille[i][j+1])
+					{
+					case 0:
+						g.setColor(Color.white);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+					
+					case 1:
+						g.setColor(Color.CYAN);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+					
+					case 2:
+						g.setColor(Color.BLUE);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+					
+					case 3:
+						g.setColor(Color.ORANGE);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+						
+					case 4:
+						g.setColor(Color.YELLOW);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+
+					case 5:
+						g.setColor(Color.RED);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+						
+					case 6:
+						g.setColor(Color.PINK);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+						
+					case 7:
+						g.setColor(Color.GREEN);
+						//g.draw3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),false);
+						g.fill3DRect(j*larg/(inb_colonnes-2), i*haut/(inb_lignes-1), larg/(inb_colonnes-2), haut/(inb_lignes-1),true);
+						
+						break;
+						
 					}
+					//g.draw3DRect(i*haut/inb_lignes, i*larg/inb_colonnes, larg/inb_colonnes, haut/inb_lignes, true);
+					
+					
 				}
 			}
 		  
