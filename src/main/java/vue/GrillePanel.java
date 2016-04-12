@@ -7,10 +7,10 @@ import java.util.Observer;
 import javax.swing.JPanel;
 import modele.Grille;
 
-public class Grille_panel extends JPanel { 
+public class GrillePanel extends JPanel { 
 	private Grille grille_courante ;
 	
-	public Grille_panel (Grille pGrille){
+	public GrillePanel (Grille pGrille){
 		this.grille_courante= pGrille;
 	}
 	
