@@ -13,6 +13,7 @@ public class S_Tetrimino extends Piece{
 	public S_Tetrimino() {
 		super();
 		this.couleur = Couleur.ROUGE;
+		iCouleur = 5;
 		initialisationCoordonnees();
 	}
 	
@@ -53,5 +54,4 @@ public class S_Tetrimino extends Piece{
 	public int[] getiLaPieceTab() {
 		return matricePositionsSTetrimino[this.getiPosition()];
 	}
-
 }
