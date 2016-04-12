@@ -10,6 +10,7 @@ public class TetrisModele extends Observable {
 
 	public TetrisModele() {
 		this.jeu = new Jeu();
+		this.grille = new Grille(20, 10);
 	}
 	
 	public Grille getGrille() {
