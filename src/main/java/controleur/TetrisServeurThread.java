@@ -42,7 +42,9 @@ public class TetrisServeurThread extends Thread{
 				if(!this.tetris2pThread.isAlive())
 				{
 					this.tetrisModele.getJeu().setJeu2PDemarre(true);
-					initialiser_jeu();
+					tetrisGUI.getStatsPanel().layoutModeJeu();
+					this.tetrisGUI.goToGrille();
+					
 					this.tetris2pThread.start();
 				}
 				InputStreamReader flux = new InputStreamReader(socket.getInputStream());

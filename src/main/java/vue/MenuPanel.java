@@ -9,9 +9,10 @@ import modele.TetrisModele;
 
 public class MenuPanel extends JPanel{
 	
+	private JButton onePlayer;
+	private JButton twoPlayersServeur;
+	private JButton twoPlayersClient;
 	private TetrisModele tetrisModele;
-	private JButton onePlayer; 
-	private JButton twoPlayers;
 	private int[] meilleursScores;
 	private Object[][] meilleursScoresObject;
 	private String[] titreColonne;
@@ -22,7 +23,8 @@ public class MenuPanel extends JPanel{
 		this.tetrisModele = tetrisModele;
 		
 		onePlayer = new JButton("Tapez 'a' pour jouer en solo"); 
-		twoPlayers = new JButton("Tapez 'b' pour jouer en multijoueurs");
+		twoPlayersServeur = new JButton("Tapez 'b' pour héberger une partie multijoueurs");
+		twoPlayersClient = new JButton("Tapez 'c' pour rejoindre une partie multijoueurs");
 		
 		meilleursScoresObject = new Object [5][1];
 		titreColonne = new String[1];
@@ -47,7 +49,8 @@ public class MenuPanel extends JPanel{
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		this.add(onePlayer);
-		this.add(twoPlayers);
+		this.add(twoPlayersServeur);
+		this.add(twoPlayersClient);
 		this.add(top5.getTableHeader());
 		this.add(top5 );
 		
