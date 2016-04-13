@@ -38,12 +38,25 @@ public class TetrisControleur {
 			switch(e.getKeyCode())
 			{
 				case KeyEvent.VK_A:
+					
+					tetrisModele.getJeu().setModeJeu(1);
+					tetrisGUI.getStatsPanel().layoutModeJeu();
+					tetrisGUI.goToGrille();
+					controleurTimer = new ControleurTimer(tetrisModele, tetrisGUI);
+					controleurTimer.initialiser_jeu();
+					break;	
+
+				case KeyEvent.VK_B:
+
+					tetrisModele.getJeu().setModeJeu(2);
+					tetrisGUI.getStatsPanel().layoutModeJeu();
 					tetrisGUI.goToGrille();
 					controleurTimer = new ControleurTimer(tetrisModele, tetrisGUI);
 					controleurTimer.initialiser_jeu();
 					break;	
 			}
 		}
+		else
 		{
 			switch (e.getKeyCode()) {
 

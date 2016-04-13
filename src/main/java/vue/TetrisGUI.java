@@ -69,4 +69,8 @@ public class TetrisGUI extends JFrame implements Observer {
 		this.add(gameOverPanel);
 		this.setVisible(true);
 	}
+	
+	public StatsPanel getStatsPanel(){
+		return this.statsPanel;
+	}
 }

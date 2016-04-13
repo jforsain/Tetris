@@ -2,8 +2,10 @@ package modele;
 
 public class Jeu {
 	
+	private int modeJeu;
 	private int lignesCompletees;
 	private int score;
+	private int scoreAdversaire;
 	private boolean gameOver;
 	private boolean jeuNonDemarre;
 	private Piece pieceSuivante;
@@ -11,9 +13,11 @@ public class Jeu {
 	private int temps_descente;
 	
 	public Jeu() {
+		this.modeJeu = 1;
 		this.jeuNonDemarre = true;
 		this.gameOver = false;
 		this.score = 0;
+		this.scoreAdversaire = 0;
 		this.lignesCompletees = 0;
 		this.niveau = 1;
 		this.temps_descente = 1000;
@@ -27,12 +31,27 @@ public class Jeu {
 		this.lignesCompletees = lignesCompletees;
 	}
 
+	public int getModeJeu() {
+		return modeJeu;
+	}
+
+	public void setModeJeu(int modeJeu) {
+		this.modeJeu = modeJeu;
+	}
+	
 	public int getScore() {
 		return score;
 	}
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+	public int getScoreAdversaire() {
+		return scoreAdversaire;
+	}
+
+	public void setScoreAdversaire(int scoreAdversaire) {
+		this.scoreAdversaire = scoreAdversaire;
 	}
 
 	public boolean isGameOver() {

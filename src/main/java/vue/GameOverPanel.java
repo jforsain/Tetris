@@ -19,7 +19,7 @@ public class GameOverPanel extends JPanel {
 		this.tetrisModele = pTterisModele;
 		
 		this.gameOver = new JLabel("<html>GAME OVER<br>Score final : " + Integer.toString(tetrisModele.getJeu().getScore()) +
-				"<br>Niveau atteint : " + Integer.toString(tetrisModele.getJeu().getNiveau())+ "<br><br>Tapez 'z' pour revenir au menu</html>", SwingConstants.CENTER);
+				"<br>Niveau atteint : " + Integer.toString(tetrisModele.getJeu().getNiveau())+ "</html>", SwingConstants.CENTER);
 		
 		gameOver.setFont(new Font ("Serif", Font.PLAIN, 40));
 		
