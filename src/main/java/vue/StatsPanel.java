@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -49,5 +50,11 @@ public class StatsPanel extends JPanel {
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(getWidth(), getHeight());
+	}
+	
+	public void updateStats () {
+		scorePanel.updateScore();
+		niveauPanel.updateNiveau();
+		lignesCompleteesPanel.updateLignesCompletees();
 	}
 }

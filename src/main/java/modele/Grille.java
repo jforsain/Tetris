@@ -287,11 +287,12 @@ public class Grille extends Observable {
 		}
 	}
 
-	public void ligne_completee() {
+	public int ligne_completee() {
 		boolean contientBlocs = true;
 		int k = 0;
 		int[] tableau = new int[10];
 		int i = this.iLignes - 2;
+		int nbLignesCompletees = 0;
 		/* 1 - On stocke chaque ligne dans un tableau */
 		while(i >= 0) { // On parcours la
 																// grille de bas
@@ -312,7 +313,7 @@ public class Grille extends Observable {
 			
 			/* 3 - Si la ligne contient que des blocs, elle disparaît */
 			if (contientBlocs) {
-				System.out.println("DISPARITION");
+				nbLignesCompletees++;
 				for (int l = 1; l < this.iColonnes - 1; l++) {
 					iLaGrilleTab[i][l] = 0;
 				}
@@ -329,6 +330,7 @@ public class Grille extends Observable {
 			if(!contientBlocs)
 				i--;
 		}
+		return nbLignesCompletees;
 	}
 
 	public int[][] getiLaGrilleTab() {

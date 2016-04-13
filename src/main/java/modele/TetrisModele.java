@@ -7,6 +7,7 @@ public class TetrisModele extends Observable {
 	private Grille grille;
 	private Jeu jeu;
 	private Piece piece;
+	private Piece pieceSuivante;
 
 	public TetrisModele() {
 		this.jeu = new Jeu();
@@ -29,6 +30,14 @@ public class TetrisModele extends Observable {
 		this.piece = piece;
 	}
 
+	public Piece getPieceSuivante() {
+		return pieceSuivante;
+	}
+
+	public void setPieceSuivante(Piece pieceSuivante) {
+		this.pieceSuivante = pieceSuivante;
+	}
+	
 	public Jeu getJeu() {
 		return jeu;
 	}

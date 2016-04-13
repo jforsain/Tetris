@@ -27,21 +27,23 @@ public class ControleurTimer {
 		PieceFactory pf = new PieceFactory();
 
 		Piece piece = pf.getPieceRandom();
+		Piece pieceSuivante = pf.getPieceRandom();
 		tetrisModele.setPiece(piece);
+		tetrisModele.setPieceSuivante(pieceSuivante);
 
 		grille.apparition_piece(piece);
-		lancer_jeu(grille, piece);
+		lancer_jeu();
 
 	}
 
-	public void lancer_jeu(Grille grille, Piece piece) {
+	public void lancer_jeu() {
 		PieceFactory pf = new PieceFactory();
 		Jeu jeu = tetrisModele.getJeu();
 		
 		jeu.setJeuFini(false);
 
-		final Timer timerAcc = new Timer();
-		TimerTask timerTaskAcc = new TimerTask()
+		final Timer timerAcceleration = new Timer();
+		TimerTask timerTaskAcceleration = new TimerTask()
 			{
 				@Override
 				public void run() 
@@ -54,7 +56,7 @@ public class ControleurTimer {
 		ControleJeuThread controleJeuThread = new ControleJeuThread(tetrisModele);
 		controleJeuThread.start();
 		
-		timerAcc.schedule(timerTaskAcc, 30000, 30000); // Acceleration toutes les 30
+		timerAcceleration.schedule(timerTaskAcceleration, 30000, 30000); // Acceleration toutes les 30
 												// secondes
 	
 	}

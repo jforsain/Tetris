@@ -19,6 +19,7 @@ public class ControleJeuThread extends Thread{
 		while (!tetrisModele.getJeu().isJeuFini())
 		{
 			PieceFactory pf = new PieceFactory();
+			int nbLignesCompletees = 0;
 			try {
 				Thread.sleep(tetrisModele.getJeu().get_temps_descente());
 			} catch (Exception e) {
@@ -29,12 +30,16 @@ public class ControleJeuThread extends Thread{
 			
 			else {
 				tetrisModele.getGrille().poser_piece(tetrisModele.getPiece());
-				tetrisModele.getGrille().ligne_completee();
-				Piece piece = pf.getPieceRandom();
+				nbLignesCompletees = tetrisModele.getGrille().ligne_completee();
+				tetrisModele.getJeu().setScore(tetrisModele.getJeu().getScore()+(100*nbLignesCompletees));
+				tetrisModele.getJeu().setLignesCompletees((tetrisModele.getJeu().getLignesCompletees()+nbLignesCompletees));
+				Piece piece = tetrisModele.getPieceSuivante();
 
 				if (tetrisModele.getGrille().peut_apparaitre(piece)) {
 					tetrisModele.getGrille().apparition_piece(piece);
 					tetrisModele.setPiece(piece);
+					Piece pieceSuivante = pf.getPieceRandom();
+					tetrisModele.setPieceSuivante(pieceSuivante);
 				}
 				else {
 					System.out.println("GAME OVER");

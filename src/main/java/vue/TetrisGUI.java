@@ -41,6 +41,7 @@ public class TetrisGUI extends JFrame implements Observer {
 	public void update(Observable obs, Object obj) {
 
 		repaint();
+		statsPanel.updateStats();
 	}
 	
 	public void goToGrille()
@@ -54,7 +55,10 @@ public class TetrisGUI extends JFrame implements Observer {
 	
 	public void goToMenu()
 	{		
-		this.removeAll();
-		this.setContentPane(menuPanel);
+		this.getContentPane().removeAll();
+		this.add(menuPanel);
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 	}
 }
