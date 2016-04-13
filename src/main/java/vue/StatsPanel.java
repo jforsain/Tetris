@@ -17,6 +17,7 @@ public class StatsPanel extends JPanel {
 	private ScorePanel scorePanel;
 	private PieceSuivantePanel pieceSuivantePanel;
 	private LignesCompleteesPanel lignesCompleteesPanel;
+	private GameOverPanel gameOverPanel;
 	
 	public StatsPanel(TetrisModele pTetrisModele)
 	{
@@ -57,4 +58,6 @@ public class StatsPanel extends JPanel {
 		niveauPanel.updateNiveau();
 		lignesCompleteesPanel.updateLignesCompletees();
 	}
+	
+	
 }

@@ -40,7 +40,7 @@ public class ControleurTimer {
 		PieceFactory pf = new PieceFactory();
 		Jeu jeu = tetrisModele.getJeu();
 		
-		jeu.setJeuFini(false);
+		jeu.setJeuNonDemarre(false);
 
 		final Timer timerAcceleration = new Timer();
 		TimerTask timerTaskAcceleration = new TimerTask()

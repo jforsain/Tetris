@@ -33,7 +33,7 @@ public class TetrisControleur {
 		public boolean dispatchKeyEvent(KeyEvent e) {
 			if (e.getID() == KeyEvent.KEY_PRESSED) {
 		// TODO Auto-generated method stub
-		if(modele.getJeu().isJeuFini())
+		if(modele.getJeu().isJeuNonDemarre())
 		{
 			switch(e.getKeyCode())
 			{
@@ -41,6 +41,9 @@ public class TetrisControleur {
 					tetrisGUI.goToGrille();
 					controleurTimer = new ControleurTimer(modele, tetrisGUI);
 					controleurTimer.initialiser_jeu();
+					break;	
+				case KeyEvent.VK_Z:
+					tetrisGUI.goToMenu();
 					break;	
 			}
 		}

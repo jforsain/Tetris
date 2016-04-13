@@ -16,7 +16,7 @@ public class ControleJeuThread extends Thread{
 	@Override
 	public void run ()
 	{
-		while (!tetrisModele.getJeu().isJeuFini())
+		while (!tetrisModele.getJeu().isGameOver())
 		{
 			PieceFactory pf = new PieceFactory();
 			int nbLignesCompletees = 0;
@@ -43,7 +43,9 @@ public class ControleJeuThread extends Thread{
 				}
 				else {
 					System.out.println("GAME OVER");
-					tetrisModele.getJeu().setJeuFini(true);
+					tetrisModele.getJeu().setGameOver(true);
+					tetrisModele.getJeu().setJeuNonDemarre(true);
+					tetrisModele.getGrille().rafraichir_grille(piece);
 				}
 			}
 		}

@@ -1,5 +1,7 @@
 package vue;
 
+import java.awt.Font;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -7,25 +9,22 @@ import modele.TetrisModele;
 
 public class LignesCompleteesPanel extends JPanel{
 	
-	private JLabel lignesCompleteesLabel;
-	private JLabel lignesCompleteesValue;
+	private JLabel lignesCompletees;
 	private TetrisModele tetrisModele;
 	
 	public LignesCompleteesPanel(TetrisModele pTetrisModele)
 	{
-		this.lignesCompleteesLabel = new JLabel("Lignes");
 		this.tetrisModele = pTetrisModele;
-		this.lignesCompleteesValue = new JLabel(Integer.toString(tetrisModele.getJeu().getLignesCompletees()));
+		this.lignesCompletees = new JLabel("Lignes : " + Integer.toString(tetrisModele.getJeu().getLignesCompletees()));
 		
-		lignesCompleteesLabel.setLabelFor(lignesCompleteesValue);
+		lignesCompletees.setFont(new Font ("Serif", Font.PLAIN, 50));
 		
 		/* On ajoute nos composants dans notre JPanel */
-		this.add(this.lignesCompleteesLabel);
-		this.add(this.lignesCompleteesValue);
+		this.add(this.lignesCompletees);
 
 	}
 	
 	public void updateLignesCompletees(){
-		lignesCompleteesValue.setText(Integer.toString(tetrisModele.getJeu().getLignesCompletees()));
+		lignesCompletees.setText("Lignes : " + Integer.toString(tetrisModele.getJeu().getLignesCompletees()));
 	}
 }

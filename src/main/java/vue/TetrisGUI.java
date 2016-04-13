@@ -42,6 +42,8 @@ public class TetrisGUI extends JFrame implements Observer {
 
 		repaint();
 		statsPanel.updateStats();
+		if (tetrisModele.getJeu().isGameOver())
+			goToGameOver();
 	}
 	
 	public void goToGrille()
@@ -57,8 +59,13 @@ public class TetrisGUI extends JFrame implements Observer {
 	{		
 		this.getContentPane().removeAll();
 		this.add(menuPanel);
-		this.pack();
-		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+	}
+
+	public void goToGameOver(){
+		this.getContentPane().removeAll();
+		GameOverPanel gameOverPanel = new GameOverPanel(tetrisModele);
+		this.add(gameOverPanel);
 		this.setVisible(true);
 	}
 }

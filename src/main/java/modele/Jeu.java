@@ -4,14 +4,15 @@ public class Jeu {
 	
 	private int lignesCompletees;
 	private int score;
-	private boolean enPause;
-	private boolean jeuFini;
+	private boolean gameOver;
+	private boolean jeuNonDemarre;
 	private Piece pieceSuivante;
 	private int niveau;
 	private int temps_descente;
 	
 	public Jeu() {
-		this.jeuFini = true;
+		this.jeuNonDemarre = true;
+		this.gameOver = false;
 		this.score = 0;
 		this.lignesCompletees = 0;
 		this.niveau = 1;
@@ -34,20 +35,20 @@ public class Jeu {
 		this.score = score;
 	}
 
-	public boolean isEnPause() {
-		return enPause;
+	public boolean isGameOver() {
+		return gameOver;
 	}
 
-	public void setEnPause(boolean enPause) {
-		this.enPause = enPause;
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
 	}
 
-	public boolean isJeuFini() {
-		return jeuFini;
+	public boolean isJeuNonDemarre() {
+		return jeuNonDemarre;
 	}
 
-	public void setJeuFini(boolean jeuFini) {
-		this.jeuFini = jeuFini;
+	public void setJeuNonDemarre(boolean jeuNonDemarre) {
+		this.jeuNonDemarre = jeuNonDemarre;
 	}
 
 	public Piece getPieceSuivante() {

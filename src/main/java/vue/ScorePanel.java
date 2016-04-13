@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;
@@ -9,23 +10,22 @@ import modele.TetrisModele;
 
 public class ScorePanel extends JPanel {
 	
-	private JLabel scoreLabel;
-	private JLabel scoreValue;
+	private JLabel score;
 	private TetrisModele tetrisModele;
 	
 	public ScorePanel(TetrisModele pTterisModele)
 	{
 		this.tetrisModele = pTterisModele;
 		
-		this.scoreValue = new JLabel(Integer.toString(tetrisModele.getJeu().getScore()));
-		this.scoreLabel = new JLabel("Score");
+		this.score = new JLabel("Score : " + Integer.toString(tetrisModele.getJeu().getScore()));
+
+		score.setFont(new Font ("Serif", Font.PLAIN, 50));
 		
 		/* On ajoute nos composants dans notre JPanel */
-		this.add(this.scoreLabel);
-		this.add(this.scoreValue);
+		this.add(this.score);
 	}
 	
 	public void updateScore(){
-		scoreValue.setText(Integer.toString(tetrisModele.getJeu().getScore()));
+		score.setText("Score : " + Integer.toString(tetrisModele.getJeu().getScore()));
 	}
 }

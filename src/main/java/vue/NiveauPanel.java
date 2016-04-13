@@ -1,5 +1,7 @@
 package vue;
 
+import java.awt.Font;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -7,23 +9,21 @@ import modele.TetrisModele;
 
 public class NiveauPanel extends JPanel {
 
-	private JLabel niveauLabel;
-	private JLabel niveauValue;
+	private JLabel niveau;
 	private TetrisModele tetrisModele;
 
 	public NiveauPanel(TetrisModele pTetrisModele)
 	{
 		this.tetrisModele = pTetrisModele;
-		this.niveauLabel = new JLabel("Niveau");
-		this.niveauValue = new JLabel(Integer.toString(tetrisModele.getJeu().getNiveau()));
-		
+		this.niveau= new JLabel("Niveau : " + Integer.toString(tetrisModele.getJeu().getNiveau()));
+		niveau.setFont(new Font ("Serif", Font.PLAIN, 50));
+
 		/* On ajoute nos composants dans notre JPanel */
-		this.add(this.niveauLabel);
-		this.add(this.niveauValue);
+		this.add(this.niveau);
 		
 	}
 	
 	public void updateNiveau(){
-		niveauValue.setText(Integer.toString(tetrisModele.getJeu().getNiveau()));
+		niveau.setText("Niveau : " + Integer.toString(tetrisModele.getJeu().getNiveau()));
 	}
 }
