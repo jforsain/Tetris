@@ -53,8 +53,6 @@ public class TetrisControleur {
 					tetrisGUI.getStatsPanel().layoutModeJeu();
 					tetrisGUI.goToGrille();
 					tetrisServeurControleur = new TetrisServeurControleur(tetrisModele, tetrisGUI);
-					
-					controleurTimer = new ControleurTimer(tetrisModele, tetrisGUI);
 					controleurTimer.initialiser_jeu();
 					break;	
 			}
