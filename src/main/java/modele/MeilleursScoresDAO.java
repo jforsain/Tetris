@@ -1,51 +1,90 @@
 package modele;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class MeilleursScoresDAO {
 
-	private Integer[] meilleursScores;
-	
+	private int[] meilleursScores;
+	private String cheminFichier;
 	public MeilleursScoresDAO () {
+
+		meilleursScores = new int[5];
+		cheminFichier = System.getProperty("user.dir") + "\\src\\main\\java\\modele\\meilleursscores.txt";
+		lireFichierScores();
+	}
+	
+	public void lireFichierScores(){
+
 		int i = 0;
 		try {
 			
-			File f = new File(System.getProperty("user.dir") + "\\src\\main\\java\\modele\\meilleursscores.txt");
-			 
-			FileReader fr = new FileReader(f);
-			BufferedReader br = new BufferedReader(fr) ;
+			File f = new File(cheminFichier);
 			
-			try { 
-				StringBuilder sb = new StringBuilder();
-				String line = br.readLine();
-				
-				while (line != null) {
-			        sb.append(line);
-			        sb.append(System.lineSeparator());
-			        line = br.readLine();
-			    }
-			    String everything = sb.toString();
-			    System.out.println(everything);
-			    
-			} catch (IOException exception) {
-				System.out.println("Erreur lors de la lecture : " + exception.getMessage());
-			}
+			Scanner s = new Scanner(f);
+			
+			for(i=0;i<5;i++)
+            {
+				meilleursScores[i]=s.nextInt();
+            }
 			
 		}catch (FileNotFoundException exception){
 			System.out.println("Le fichier n'a pas été trouvé");
 		}
+	}	
 	
-		for (i=0;i<5;i++){
-			//System.out.println(meilleursScores[i]);
+	public void nouveauScore (int score){
+		int [] tousScoresTmp = new int [6];
+		int scoreMax;
+		int scoreTmp;
+		
+		for (int i = 0; i<5; i++){
+			tousScoresTmp[i] = meilleursScores[i];
 		}
+		tousScoresTmp[5] = score;
+		
+		for (int i=0; i<6; i++){
+			scoreMax = tousScoresTmp[i];
+			for (int j=i+1; j<6; j++){
+				if (tousScoresTmp [j] > scoreMax){
+					scoreTmp = tousScoresTmp[i];
+					tousScoresTmp[i] = tousScoresTmp [j];
+					tousScoresTmp [j] = scoreTmp;
+					scoreMax = tousScoresTmp[i];
+				}
+				
+			}
+		}		
+		for (int i = 0; i<5; i++){
+			meilleursScores[i] = tousScoresTmp[i];
+		}
+		setMeilleursScores();
 	}
+	
+	
+	public void setMeilleursScores() {
+
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(cheminFichier, "UTF-8");
+			for (int i = 0; i<5; i++){
+				writer.println(Integer.toString(meilleursScores[i]));
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Fichier introuvable");
+		} catch (UnsupportedEncodingException e) {
+			System.out.println(" Erreur d'encodage");
+		}
+		
+	}
+	
+	public int[] getMeilleursScores (){
+		return this.meilleursScores;
+	}
+	
+	
 }

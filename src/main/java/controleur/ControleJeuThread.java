@@ -46,6 +46,7 @@ public class ControleJeuThread extends Thread{
 					tetrisModele.getJeu().setGameOver(true);
 					tetrisModele.getJeu().setJeuNonDemarre(true);
 					tetrisModele.getGrille().rafraichir_grille(piece);
+					tetrisModele.getMeilleursScoresDAO().nouveauScore(tetrisModele.getJeu().getScore());
 				}
 			}
 		}

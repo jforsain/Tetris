@@ -8,7 +8,7 @@ public class TetrisModele extends Observable {
 	private Jeu jeu;
 	private Piece piece;
 	private Piece pieceSuivante;
-	MeilleursScoresDAO meilleursScoresDAO;
+	private MeilleursScoresDAO meilleursScoresDAO;
 
 	public TetrisModele() {
 		this.jeu = new Jeu();
@@ -42,5 +42,9 @@ public class TetrisModele extends Observable {
 	
 	public Jeu getJeu() {
 		return jeu;
+	}
+	
+	public MeilleursScoresDAO getMeilleursScoresDAO (){
+		return this.meilleursScoresDAO;
 	}
 }

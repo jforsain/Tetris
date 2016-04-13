@@ -17,7 +17,7 @@ public class TetrisGUI extends JFrame implements Observer {
 	
 	/* Panels */
 	private JSplitPane fullTetrisPanel;
-	private MenuPanel menuPanel = new MenuPanel();
+	private MenuPanel menuPanel;
 	private GrillePanel grillePanel;
 	private StatsPanel statsPanel;
 	
@@ -25,6 +25,7 @@ public class TetrisGUI extends JFrame implements Observer {
 		this.tetrisModele = modele; // Liaison Vue - Modele
 		
 		// Initialisation Panel
+		this.menuPanel = new MenuPanel(this.tetrisModele);
 		this.grillePanel = new GrillePanel(this.tetrisModele);
 		this.statsPanel = new StatsPanel(this.tetrisModele);
 		this.fullTetrisPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.grillePanel, this.statsPanel);
