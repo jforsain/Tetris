@@ -2,6 +2,7 @@ package modele;
 
 public class Jeu {
 	
+	private int modeJeu;
 	private int lignesCompletees;
 	private int score;
 	private int scoreAdversaire;
@@ -14,9 +15,11 @@ public class Jeu {
 	private boolean jeu2PEnPause;
 
 	public Jeu() {
+		this.modeJeu = 1;
 		this.jeuNonDemarre = true;
 		this.gameOver = false;
 		this.score = 0;
+		this.scoreAdversaire = 0;
 		this.lignesCompletees = 0;
 		this.niveau = 1;
 		this.temps_descente = 1000;
@@ -30,6 +33,14 @@ public class Jeu {
 		this.lignesCompletees = lignesCompletees;
 	}
 
+	public int getModeJeu() {
+		return modeJeu;
+	}
+
+	public void setModeJeu(int modeJeu) {
+		this.modeJeu = modeJeu;
+	}
+	
 	public int getScore() {
 		return score;
 	}
@@ -37,6 +48,7 @@ public class Jeu {
 	public void setScore(int score) {
 		this.score = score;
 	}
+	
 
 	public boolean isGameOver() {
 		return gameOver;

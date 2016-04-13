@@ -17,14 +17,14 @@ public class TetrisServeurThread extends Thread{
 	private Socket socket;
 	private TetrisModele tetrisModele;
 	private TetrisGUI tetrisGUI;
-	private Tetris2PStartGameThread tetris2pStartGameThread;
+	private Tetris2PThread tetris2pThread;
 	
-	public TetrisServeurThread(ServerSocket pServeurSocket, TetrisModele pTetrisModele, TetrisGUI pTetrisGUI, Tetris2PStartGameThread pTetris2pStartGameThread)
+	public TetrisServeurThread(ServerSocket pServeurSocket, TetrisModele pTetrisModele, TetrisGUI pTetrisGUI, Tetris2PThread pTetris2pThread)
 	{
 		this.serverSocket = pServeurSocket;
 		this.tetrisModele = pTetrisModele;
 		this.tetrisGUI = pTetrisGUI;
-		this.tetris2pStartGameThread = pTetris2pStartGameThread;
+		this.tetris2pThread = pTetris2pThread;
 	}
 	
 	public void run()
@@ -33,13 +33,11 @@ public class TetrisServeurThread extends Thread{
 			while(true)
 			{
 				this.socket = this.serverSocket.accept(); // Un client se connecte : on l'accepte
-				if(!this.tetris2pStartGameThread.isAlive())
+				if(!this.tetris2pThread.isAlive())
 				{
 					this.tetrisModele.getJeu().setJeu2PDemarre(true);
 					this.tetrisGUI.removeAll();
-					this.tetrisGUI.setContentPane(this.tetrisGUI.getGrille2JoueursPanel());
-					this.tetrisGUI.majGUI();
-					this.tetris2pStartGameThread.start();
+					this.tetris2pThread.start();
 				}
 				InputStreamReader flux = new InputStreamReader(socket.getInputStream());
 				BufferedReader entree = new BufferedReader(flux);

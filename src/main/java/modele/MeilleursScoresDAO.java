@@ -13,7 +13,7 @@ public class MeilleursScoresDAO {
 	public MeilleursScoresDAO () {
 
 		meilleursScores = new int[5];
-		cheminFichier = System.getProperty("user.dir") + "\\src\\main\\java\\modele\\meilleursscores.txt";
+		cheminFichier = "meilleursscores.txt";
 		lireFichierScores();
 	}
 	

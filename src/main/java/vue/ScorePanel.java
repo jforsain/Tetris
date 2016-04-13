@@ -13,9 +13,9 @@ public class ScorePanel extends JPanel {
 	private JLabel score;
 	private TetrisModele tetrisModele;
 	
-	public ScorePanel(TetrisModele pTterisModele)
+	public ScorePanel(TetrisModele pTerisModele)
 	{
-		this.tetrisModele = pTterisModele;
+		this.tetrisModele = pTerisModele;
 		
 		this.score = new JLabel("Score : " + Integer.toString(tetrisModele.getJeu().getScore()));
 

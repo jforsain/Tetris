@@ -28,7 +28,6 @@ public class TetrisGUI extends JFrame implements Observer {
 		this.grillePanel = new GrillePanel(this.tetrisModele);
 		this.statsPanel = new StatsPanel(this.tetrisModele);
 		this.fullTetrisPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.grillePanel, this.statsPanel);
-	//	this.grille2JoueursPanel = new Grille2JoueursPanel(); // Sert pour la partie en réseau
 		
 		/* Paramétrage JFrame */
 		this.setTitle("TETRIS");
@@ -70,9 +69,7 @@ public class TetrisGUI extends JFrame implements Observer {
 		this.setVisible(true);
 	}
 		
-	public void majGUI()
-	{
-		this.pack();
-		this.setLocationRelativeTo(null);
+	public StatsPanel getStatsPanel(){
+		return this.statsPanel;
 	}
 }
