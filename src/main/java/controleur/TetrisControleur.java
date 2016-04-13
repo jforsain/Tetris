@@ -19,6 +19,7 @@ public class TetrisControleur {
 	private TetrisGUI tetrisGUI;
 	private ControleurTimer controleurTimer;
 	private TetrisServeurControleur tetrisServeurControleur;
+	private TetrisClientControleur tetrisClientControleur;
 	
 	public TetrisControleur(TetrisModele tetrisModele, TetrisGUI tetrisGUI) {
 		this.tetrisModele = tetrisModele;
@@ -54,6 +55,14 @@ public class TetrisControleur {
 					tetrisGUI.goToGrille();
 					tetrisServeurControleur = new TetrisServeurControleur(tetrisModele, tetrisGUI);
 					controleurTimer.initialiser_jeu();
+					break;	
+					
+				case KeyEvent.VK_C:
+
+					tetrisModele.getJeu().setModeJeu(2);
+					tetrisGUI.getStatsPanel().layoutModeJeu();
+					tetrisGUI.goToGrille();
+					tetrisClientControleur = new TetrisClientControleur(tetrisModele, tetrisGUI);
 					break;	
 			}
 		}
