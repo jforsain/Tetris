@@ -15,14 +15,14 @@ import modele.TetrisModele;
 
 public class TetrisControleur {
 	
-	private TetrisModele modele;
+	private TetrisModele tetrisModele;
 	private TetrisGUI tetrisGUI;
 	private ControleurTimer controleurTimer;
 	
-	public TetrisControleur(TetrisModele modele, TetrisGUI tetrisGUI) {
-		this.modele = modele;
+	public TetrisControleur(TetrisModele tetrisModele, TetrisGUI tetrisGUI) {
+		this.tetrisModele = tetrisModele;
 		this.tetrisGUI = tetrisGUI;
-		modele.addObserver(tetrisGUI);
+		tetrisModele.addObserver(tetrisGUI);
 		KeyboardFocusManager manager = KeyboardFocusManager
 				.getCurrentKeyboardFocusManager();
 		manager.addKeyEventDispatcher(new MyDispatcher());
@@ -33,53 +33,49 @@ public class TetrisControleur {
 		public boolean dispatchKeyEvent(KeyEvent e) {
 			if (e.getID() == KeyEvent.KEY_PRESSED) {
 		// TODO Auto-generated method stub
-		if(modele.getJeu().isJeuNonDemarre())
+		if(tetrisModele.getJeu().isJeuNonDemarre())
 		{
 			switch(e.getKeyCode())
 			{
 				case KeyEvent.VK_A:
 					tetrisGUI.goToGrille();
-					controleurTimer = new ControleurTimer(modele, tetrisGUI);
+					controleurTimer = new ControleurTimer(tetrisModele, tetrisGUI);
 					controleurTimer.initialiser_jeu();
-					break;	
-				case KeyEvent.VK_Z:
-					tetrisGUI.goToMenu();
 					break;	
 			}
 		}
-		else
 		{
 			switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_LEFT:
 					System.out.println("gauche");
-					if (modele.getGrille().peut_aller_a_gauche(modele.getPiece())) {
+					if (tetrisModele.getGrille().peut_aller_a_gauche(tetrisModele.getPiece())) {
 						System.out.println("Aller a gauche : OK");
-						modele.getGrille().decaler_gauche(modele.getPiece());
+						tetrisModele.getGrille().decaler_gauche(tetrisModele.getPiece());
 					} else
 						System.out.println("Aller a gauche : ECHEC");
 					break;
 	
 				case KeyEvent.VK_RIGHT:
-					if (modele.getGrille().peut_aller_a_droite(modele.getPiece())) {
+					if (tetrisModele.getGrille().peut_aller_a_droite(tetrisModele.getPiece())) {
 						System.out.println("Aller a droite : OK");
-						modele.getGrille().decaler_droite(modele.getPiece());
+						tetrisModele.getGrille().decaler_droite(tetrisModele.getPiece());
 					} else
 						System.out.println("Aller a droite : ECHEC");
 					break;
 	
 				case KeyEvent.VK_UP:
-					if (modele.getGrille().peut_pivoter(modele.getPiece())) {
+					if (tetrisModele.getGrille().peut_pivoter(tetrisModele.getPiece())) {
 						System.out.println("PIVOT : OK");
 					} else
 						System.out.println("PIVOT : ECHEC");
 					break;
 	
 				case KeyEvent.VK_DOWN:
-					while (modele.getGrille().peut_descendre(modele.getPiece())) {
-						modele.getGrille().descendre_piece(modele.getPiece());
+					while (tetrisModele.getGrille().peut_descendre(tetrisModele.getPiece())) {
+						tetrisModele.getGrille().descendre_piece(tetrisModele.getPiece());
 					}
-					modele.getGrille().rafraichir_grille(modele.getPiece());
+					tetrisModele.getGrille().rafraichir_grille(tetrisModele.getPiece());
 					break;
 			}
 		}

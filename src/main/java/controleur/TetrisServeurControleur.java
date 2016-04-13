@@ -26,7 +26,7 @@ public class TetrisServeurControleur {
 	{
 		try {
 			ServerSocket serverSocket = new ServerSocket(PORT);
-			this.serveurThread = new TetrisServeurThread(serverSocket, this.tetrisModele, this.tetrisGUI);
+			//this.serveurThread = new TetrisServeurThread(serverSocket, this.tetrisModele, this.tetrisGUI);
 			this.serveurThread.start(); // On lance le thread qui va attentre une connexion utilisateur
 			
 		} catch (IOException e) {

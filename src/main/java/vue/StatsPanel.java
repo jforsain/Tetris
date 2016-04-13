@@ -11,7 +11,6 @@ import modele.TetrisModele;
 public class StatsPanel extends JPanel {
 	
 	private TetrisModele tetrisModele;
-
 	
 	private NiveauPanel niveauPanel;
 	private ScorePanel scorePanel;

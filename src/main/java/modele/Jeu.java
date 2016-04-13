@@ -4,6 +4,7 @@ public class Jeu {
 	
 	private int lignesCompletees;
 	private int score;
+	private int scoreAdversaire;
 	private boolean gameOver;
 	private boolean jeuNonDemarre;
 	private Piece pieceSuivante;
@@ -11,7 +12,6 @@ public class Jeu {
 	private int temps_descente;
 	private boolean jeu2PDemarre;
 	private boolean jeu2PEnPause;
-	
 
 	public Jeu() {
 		this.jeuNonDemarre = true;
@@ -108,5 +108,13 @@ public class Jeu {
 
 	public void setJeu2PEnPause(boolean jeu2pEnPause) {
 		jeu2PEnPause = jeu2pEnPause;
+	}
+	
+	public int getScoreAdversaire() {
+		return scoreAdversaire;
+	}
+
+	public void setScoreAdversaire(int scoreAdversaire) {
+		this.scoreAdversaire = scoreAdversaire;
 	}
 }

@@ -18,8 +18,6 @@ public class TetrisServeurThread extends Thread{
 	private TetrisModele tetrisModele;
 	private TetrisGUI tetrisGUI;
 	private Tetris2PStartGameThread tetris2pStartGameThread;
-	private String commande; // Servira à interpréter la commande du joueur adverse
-	private boolean dejaConnecter = false;
 	
 	public TetrisServeurThread(ServerSocket pServeurSocket, TetrisModele pTetrisModele, TetrisGUI pTetrisGUI, Tetris2PStartGameThread pTetris2pStartGameThread)
 	{
@@ -45,11 +43,10 @@ public class TetrisServeurThread extends Thread{
 				}
 				InputStreamReader flux = new InputStreamReader(socket.getInputStream());
 				BufferedReader entree = new BufferedReader(flux);
-				this.commande = entree.readLine();
-				
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			
 		}
 	}
 }
