@@ -1,13 +1,11 @@
 package vue;
 
-import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
-import modele.Grille;
 import modele.TetrisModele;
 
 public class TetrisGUI extends JFrame implements Observer {
@@ -20,14 +18,16 @@ public class TetrisGUI extends JFrame implements Observer {
 	private MenuPanel menuPanel = new MenuPanel();
 	private GrillePanel grillePanel;
 	private StatsPanel statsPanel;
-	
+	private Grille2JoueursPanel grille2JoueursPanel;
+
 	public TetrisGUI(TetrisModele modele) {
 		this.tetrisModele = modele; // Liaison Vue - Modele
 		
-		// Initialisation Panel
+		// Initialisation Panels
 		this.grillePanel = new GrillePanel(this.tetrisModele);
 		this.statsPanel = new StatsPanel(this.tetrisModele);
 		this.fullTetrisPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.grillePanel, this.statsPanel);
+		this.grille2JoueursPanel = new Grille2JoueursPanel(); // Sert pour la partie en réseau
 		
 		/* Paramétrage JFrame */
 		this.setTitle("TETRIS");
@@ -67,5 +67,15 @@ public class TetrisGUI extends JFrame implements Observer {
 		GameOverPanel gameOverPanel = new GameOverPanel(tetrisModele);
 		this.add(gameOverPanel);
 		this.setVisible(true);
+	}
+	
+	public Grille2JoueursPanel getGrille2JoueursPanel() {
+		return grille2JoueursPanel;
+	}
+	
+	public void majGUI()
+	{
+		this.pack();
+		this.setLocationRelativeTo(NULL);
 	}
 }

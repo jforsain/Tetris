@@ -45,11 +45,10 @@ public class ControleJeuThread extends Thread{
 					System.out.println("GAME OVER");
 					tetrisModele.getJeu().setGameOver(true);
 					tetrisModele.getJeu().setJeuNonDemarre(true);
-					tetrisModele.getGrille().rafraichir_grille(piece);
+					tetrisModele.getGrille().rafraichir_grille(piece); // update tetris gui 
+					//TODO getScore. 
 				}
 			}
-		}
-		
+		}	
 	}
-
 }

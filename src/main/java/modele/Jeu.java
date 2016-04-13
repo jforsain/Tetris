@@ -9,7 +9,10 @@ public class Jeu {
 	private Piece pieceSuivante;
 	private int niveau;
 	private int temps_descente;
+	private boolean jeu2PDemarre;
+	private boolean jeu2PEnPause;
 	
+
 	public Jeu() {
 		this.jeuNonDemarre = true;
 		this.gameOver = false;
@@ -89,5 +92,21 @@ public class Jeu {
 	
 	public void set_niveau(int niveau){
 		this.niveau = niveau;
+	}
+	
+	public boolean getJeu2PDemarre() {
+		return jeu2PDemarre;
+	}
+
+	public void setJeu2PDemarre(boolean jeu2pDemarre) {
+		jeu2PDemarre = jeu2pDemarre;
+	}
+
+	public boolean getJeu2PEnPause() {
+		return jeu2PEnPause;
+	}
+
+	public void setJeu2PEnPause(boolean jeu2pEnPause) {
+		jeu2PEnPause = jeu2pEnPause;
 	}
 }
