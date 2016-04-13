@@ -72,6 +72,7 @@ public class StatsPanel extends JPanel {
 		scorePanel.updateScore();
 		niveauPanel.updateNiveau();
 		lignesCompleteesPanel.updateLignesCompletees();
+		scoreAdversairePanel.updateScoreAdversaire();
 	}
 	
 	
