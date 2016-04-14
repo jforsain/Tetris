@@ -17,7 +17,7 @@ public class ScoreAdversairePanel extends JPanel {
 	{
 		this.tetrisModele = terisModele;
 		
-		this.scoreAdversaire = new JLabel("<html>Score ennemi :<br>" + Integer.toString(tetrisModele.getJeu().getScoreAdversaire())+ "");
+		this.scoreAdversaire = new JLabel("<html>Score ennemi :<br>" + Integer.toString(tetrisModele.getJeu().getScoreAdversaire())+ " </html>");
 
 		scoreAdversaire.setFont(new Font ("Serif", Font.PLAIN, 50));
 		
@@ -26,6 +26,6 @@ public class ScoreAdversairePanel extends JPanel {
 	}
 	
 	public void updateScoreAdversaire(){
-		scoreAdversaire.setText("Score : " + Integer.toString(tetrisModele.getJeu().getScoreAdversaire()));
+		scoreAdversaire.setText("<html>Score ennemi :<br>" + Integer.toString(tetrisModele.getJeu().getScoreAdversaire())+ " </html>");
 	}
 }

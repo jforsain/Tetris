@@ -130,9 +130,7 @@ public class Grille extends Observable {
 	public void pivoter(Piece p) {
 		vider_piece_dans_grille(p);
 		Coordonnees coord[][] = p.getCoordonnees();
-		System.out.println(p.getiPosition());
 		p.pivoterDroit();
-		System.out.println(p.getiPosition());
 
 		int iPosition = p.getiPosition();
 		for (int i = 0; i <= 3; i++) {
@@ -236,7 +234,6 @@ public class Grille extends Observable {
 			x = x + deltaX;
 			int y = coord[iPosition - 1][i].getY();
 			y = y + deltaY;
-			System.out.println(x + " " + y);
 			if (x > iLignes - 1 || y > iColonnes - 1) {
 				libre = false;
 			} else if (iLaGrilleTab[x][y] != 0) {
@@ -272,7 +269,6 @@ public class Grille extends Observable {
 	 * @parms p
 	 * */
 	public void poser_piece(Piece p) {
-		System.out.println("poser_piece");
 		Coordonnees coord[][] = p.getCoordonnees();
 		int iPosition = p.getiPosition();
 		for (int i = 0; i <= 3; i++) {

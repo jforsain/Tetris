@@ -67,27 +67,19 @@ public class TetrisControleur {
 					switch (e.getKeyCode()) {
 		
 						case KeyEvent.VK_LEFT:
-							System.out.println("gauche");
 							if (tetrisModele.getGrille().peut_aller_a_gauche(tetrisModele.getPiece())) {
-								System.out.println("Aller a gauche : OK");
 								tetrisModele.getGrille().decaler_gauche(tetrisModele.getPiece());
-							} else
-								System.out.println("Aller a gauche : ECHEC");
+							}
 							break;
 			
 						case KeyEvent.VK_RIGHT:
 							if (tetrisModele.getGrille().peut_aller_a_droite(tetrisModele.getPiece())) {
-								System.out.println("Aller a droite : OK");
 								tetrisModele.getGrille().decaler_droite(tetrisModele.getPiece());
-							} else
-								System.out.println("Aller a droite : ECHEC");
+							}
 							break;
 			
 						case KeyEvent.VK_UP:
-							if (tetrisModele.getGrille().peut_pivoter(tetrisModele.getPiece())) {
-								System.out.println("PIVOT : OK");
-							} else
-								System.out.println("PIVOT : ECHEC");
+							if (tetrisModele.getGrille().peut_pivoter(tetrisModele.getPiece()))
 							break;
 			
 						case KeyEvent.VK_SPACE:

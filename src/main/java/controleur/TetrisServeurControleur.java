@@ -34,8 +34,8 @@ public class TetrisServeurControleur {
 		try {
 			s = new ServerSocket(13333);
 			conn = s.accept(); // En attente (etat bloquant)
-			
 			/* La connection est établie */
+			
 			out = new PrintStream(conn.getOutputStream());
             out.flush();
             in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -43,13 +43,11 @@ public class TetrisServeurControleur {
             
             out.println("Welcome. Server version 1.0");
             out.flush();
-            
-            
-            connexionOK();
-
+           
 			this.serveurThread = new TetrisServeurThread(in,out, this.tetrisModele);
 			this.serveurThread.start(); // On lance le thread qui va attentre une connexion utilisateur
 			
+			   connexionOK();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
