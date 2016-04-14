@@ -2,7 +2,6 @@ package modele;
 
 public class Z_Tetrimino extends Piece{
 	
-	private Couleur couleur;
 	private int[][] matricePositionsZTetrimino = {
 				{0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0},
 				{0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0},
@@ -12,11 +11,11 @@ public class Z_Tetrimino extends Piece{
 	
 	public Z_Tetrimino() {
 		super();
-		this.couleur = Couleur.VERT;
 		iCouleur = 7;
 		initialisationCoordonnees();
 	}
 	
+	//Le but est de transformer cette matrice en couples de coordonnées avec emplacement des 1
 	private void initialisationCoordonnees() {
 		
 		// 1. matrice temporaire

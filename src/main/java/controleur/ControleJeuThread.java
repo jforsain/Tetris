@@ -11,8 +11,7 @@ public class ControleJeuThread extends Thread{
 	private int scoreAdversairePrecedent;
 	private Piece piece;
 	private Piece pieceSuivante;
-	private int tempsSave;
-
+	
 	public ControleJeuThread (TetrisModele tetrisModele)
 	{
 		this.tetrisModele = tetrisModele;
@@ -33,21 +32,21 @@ public class ControleJeuThread extends Thread{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if (tetrisModele.getGrille().peut_descendre(tetrisModele.getPiece())){
-				tetrisModele.getGrille().descendre_piece(tetrisModele.getPiece());
+			if (tetrisModele.getGrille().peutDescendre(tetrisModele.getPiece())){
+				tetrisModele.getGrille().descendrePiece(tetrisModele.getPiece());
 				scoreAdversaire = tetrisModele.getJeu().getScoreAdversaire();
 				verifMalus();
 			}
 			
 			else {
-				tetrisModele.getGrille().poser_piece(tetrisModele.getPiece());
-				nbLignesCompletees = tetrisModele.getGrille().ligne_completee();
+				tetrisModele.getGrille().poserPiece(tetrisModele.getPiece());
+				nbLignesCompletees = tetrisModele.getGrille().ligneCompletee();
 				tetrisModele.getJeu().setScore(tetrisModele.getJeu().getScore()+(100*nbLignesCompletees));
 				tetrisModele.getJeu().setLignesCompletees((tetrisModele.getJeu().getLignesCompletees()+nbLignesCompletees));
 				piece = tetrisModele.getPieceSuivante();
 
-				if (tetrisModele.getGrille().peut_apparaitre(piece)) {
-					tetrisModele.getGrille().apparition_piece(piece);
+				if (tetrisModele.getGrille().peutApparaitre(piece)) {
+					tetrisModele.getGrille().apparitionPiece(piece);
 					tetrisModele.setPiece(piece);
 					pieceSuivante = pf.getPieceRandom();
 					tetrisModele.setPieceSuivante(pieceSuivante);
@@ -55,7 +54,7 @@ public class ControleJeuThread extends Thread{
 				else {
 					tetrisModele.getJeu().setGameOver(true);
 					tetrisModele.getJeu().setJeuNonDemarre(true);
-					tetrisModele.getGrille().rafraichir_grille(piece);
+					tetrisModele.getGrille().rafraichirGrille(piece);
 					tetrisModele.getMeilleursScoresDAO().nouveauScore(tetrisModele.getJeu().getScore());
 				}
 			}

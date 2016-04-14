@@ -28,7 +28,6 @@ public class TetrisServeurControleur {
 	{
 		ServerSocket s = null;
 	    Socket conn = null;
-	    //PrintStream out = null;
 	    BufferedReader in = null;
 	    PrintWriter out = null;
 	    
@@ -42,10 +41,9 @@ public class TetrisServeurControleur {
 			this.serveurThread = new TetrisServeurThread(in,out, this.tetrisModele);
 			this.serveurThread.start(); 
 			
-			   connexionOK();
+			connexionOK();
 			   
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

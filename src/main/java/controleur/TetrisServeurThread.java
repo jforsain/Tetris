@@ -20,10 +20,9 @@ public class TetrisServeurThread extends Thread {
 	private PrintWriter printWriter;
 
 	public TetrisServeurThread(BufferedReader pBufferedReader,
-			PrintWriter pPrintWrter, TetrisModele pTetrisModele) {
+		PrintWriter pPrintWrter, TetrisModele pTetrisModele) {
 		this.tetrisModele = pTetrisModele;
 		this.bufferedReader = pBufferedReader;
-		//this.printStream = pPrintStream;
 
 		this.printWriter = pPrintWrter;
 	}
@@ -42,7 +41,6 @@ public class TetrisServeurThread extends Thread {
 			}
 			this.printWriter.println(1); // On notifie l'autre joueur que nous sommes gameover
 		} catch (NumberFormatException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
