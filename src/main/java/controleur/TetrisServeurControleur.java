@@ -43,8 +43,10 @@ public class TetrisServeurControleur {
             
             out.println("Welcome. Server version 1.0");
             out.flush();
-			
+            
+            
             connexionOK();
+
 			this.serveurThread = new TetrisServeurThread(in,out, this.tetrisModele);
 			this.serveurThread.start(); // On lance le thread qui va attentre une connexion utilisateur
 			
