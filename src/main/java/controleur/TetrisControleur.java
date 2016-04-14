@@ -22,8 +22,8 @@ public class TetrisControleur {
 	private TetrisClientControleur tetrisClientControleur;
 	
 	public TetrisControleur(TetrisModele pTetrisModele, TetrisGUI pTetrisGUI) {
-		this.tetrisModele = tetrisModele;
-		this.tetrisGUI = tetrisGUI;
+		this.tetrisModele = pTetrisModele;
+		this.tetrisGUI = pTetrisGUI;
 		tetrisModele.addObserver(tetrisGUI);
 		KeyboardFocusManager manager = KeyboardFocusManager
 				.getCurrentKeyboardFocusManager();
