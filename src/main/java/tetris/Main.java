@@ -10,6 +10,6 @@ public class Main {
 		
 		TetrisModele modele = new TetrisModele();
 		TetrisGUI tetrisGUI = new TetrisGUI(modele);
-		TetrisControleur controleur = new TetrisControleur(modele, tetrisGUI);
+		new TetrisControleur(modele, tetrisGUI);
 	}
 }

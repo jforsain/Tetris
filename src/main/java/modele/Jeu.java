@@ -7,6 +7,7 @@ public class Jeu {
 	private int score;
 	private int scoreAdversaire;
 	private boolean gameOver;
+	private boolean gameOverAdversaire;
 	private boolean jeuNonDemarre;
 	private Piece pieceSuivante;
 	private int niveau;
@@ -17,6 +18,7 @@ public class Jeu {
 		this.modeJeu = 1;
 		this.jeuNonDemarre = true;
 		this.gameOver = false;
+		this.gameOverAdversaire = false;
 		this.score = 0;
 		this.scoreAdversaire = 0;
 		this.lignesCompletees = 0;
@@ -26,6 +28,16 @@ public class Jeu {
 
 	}
 	
+
+	public boolean isGameOverAdversaire() {
+		return gameOverAdversaire;
+	}
+
+
+	public void setGameOverAdversaire(boolean gameOverAdversaire) {
+		this.gameOverAdversaire = gameOverAdversaire;
+	}
+
 
 	public boolean isMalus3EnCours() {
 		return malus3EnCours;

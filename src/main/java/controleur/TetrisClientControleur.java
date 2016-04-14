@@ -34,12 +34,12 @@ public class TetrisClientControleur {
 			
 			if(s.isConnected())
 			{
-				/* La connexion a réussi */
-				System.out.println("Connecté");
+
 				s_out = new PrintWriter(s.getOutputStream(), true);
 				s_in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 				this.clientThread = new TetrisClientThread(s_in, s_out, tetrisModele);
 				this.clientThread.start();
+
 				connexionOK();
 			}
 			

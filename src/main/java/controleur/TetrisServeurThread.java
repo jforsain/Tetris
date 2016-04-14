@@ -16,22 +16,31 @@ public class TetrisServeurThread extends Thread {
 	private TetrisModele tetrisModele;
 	private BufferedReader bufferedReader;
 	private PrintStream printStream;
+	private String lecture;
+	private PrintWriter printWriter;
 
 	public TetrisServeurThread(BufferedReader pBufferedReader,
-			PrintStream pPrintStream, TetrisModele pTetrisModele) {
+			PrintWriter pPrintWrter, TetrisModele pTetrisModele) {
 		this.tetrisModele = pTetrisModele;
 		this.bufferedReader = pBufferedReader;
-		this.printStream = pPrintStream;
+		//this.printStream = pPrintStream;
+
+		this.printWriter = pPrintWrter;
 	}
 
 	public void run() {
 		try {
 			while(!this.tetrisModele.getJeu().isGameOver())
 			{
-				this.printStream.println(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
-				this.printStream.flush();
-				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(this.bufferedReader.readLine())); // // On envoit notre score au joueur adverse
+				this.printWriter.println(this.tetrisModele.getJeu().getScore()); // On envoie notre score au joueur adverse
+				lecture = this.bufferedReader.readLine();
+				if (Integer.parseInt(lecture)!= 1){
+					this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(lecture)); // On reçoit le score du joueur adverse	
+				}
+				else
+					this.tetrisModele.getJeu().setGameOverAdversaire(true);		
 			}
+			this.printWriter.println(1); // On notifie l'autre joueur que nous sommes gameover
 		} catch (NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

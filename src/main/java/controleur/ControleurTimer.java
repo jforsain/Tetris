@@ -38,7 +38,6 @@ public class ControleurTimer {
 	}
 
 	public void lancer_jeu() {
-		PieceFactory pf = new PieceFactory();
 		Jeu jeu = tetrisModele.getJeu();
 		
 		jeu.setJeuNonDemarre(false);

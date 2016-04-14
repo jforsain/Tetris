@@ -26,6 +26,9 @@ public class ScoreAdversairePanel extends JPanel {
 	}
 	
 	public void updateScoreAdversaire(){
-		scoreAdversaire.setText("<html>Score ennemi :<br>" + Integer.toString(tetrisModele.getJeu().getScoreAdversaire())+ " </html>");
-	}
+		if (tetrisModele.getJeu().getScoreAdversaire() % 1000!=0 || tetrisModele.getJeu().getScoreAdversaire() == 0)
+			scoreAdversaire.setText("<html>Score adversaire :<br>" + Integer.toString(tetrisModele.getJeu().getScoreAdversaire())+ " </html>");
+		else
+			scoreAdversaire.setText("<html>Score adversaire :<br>" + Integer.toString(tetrisModele.getJeu().getScoreAdversaire())+ " Malus reçu!</html>");
+	}	
 }

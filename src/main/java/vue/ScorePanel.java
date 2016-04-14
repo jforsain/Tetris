@@ -26,6 +26,11 @@ public class ScorePanel extends JPanel {
 	}
 	
 	public void updateScore(){
-		score.setText("Score : " + Integer.toString(tetrisModele.getJeu().getScore()));
+		if (tetrisModele.getJeu().getScore() % 1000 == 0 && tetrisModele.getJeu().getScore() != 0 && tetrisModele.getJeu().getModeJeu() != 1)
+			score.setText("<html>Score : " + Integer.toString(tetrisModele.getJeu().getScore())+ "<br>Malus envoyé!</html>");
+		else
+			score.setText("Score : " + Integer.toString(tetrisModele.getJeu().getScore()));
+			
+			
 	}
 }
