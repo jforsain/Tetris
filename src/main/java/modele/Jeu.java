@@ -11,8 +11,6 @@ public class Jeu {
 	private Piece pieceSuivante;
 	private int niveau;
 	private int tempsDescente;
-	private boolean jeu2PDemarre;
-	private boolean jeu2PEnPause;
 	private boolean malus3EnCours;
 
 	public Jeu() {
@@ -100,23 +98,6 @@ public class Jeu {
 
 	public void setTempsDescente(int temps_descente) {
 		this.tempsDescente = temps_descente;
-	}
-	
-	
-	public boolean getJeu2PDemarre() {
-		return jeu2PDemarre;
-	}
-
-	public void setJeu2PDemarre(boolean jeu2pDemarre) {
-		jeu2PDemarre = jeu2pDemarre;
-	}
-
-	public boolean getJeu2PEnPause() {
-		return jeu2PEnPause;
-	}
-
-	public void setJeu2PEnPause(boolean jeu2pEnPause) {
-		jeu2PEnPause = jeu2pEnPause;
 	}
 	
 	public int getScoreAdversaire() {
