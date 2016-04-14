@@ -32,6 +32,8 @@ public class TetrisServeurThread extends Thread {
 				this.printStream.flush();
 				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(this.bufferedReader.readLine())); // // On envoit notre score au joueur adverse
 			}
+			this.printStream.close();
+			this.bufferedReader.close();
 		} catch (NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

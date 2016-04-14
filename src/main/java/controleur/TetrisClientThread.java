@@ -29,6 +29,8 @@ public class TetrisClientThread extends Thread{
 				this.printWriter.print(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
 				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(reponse)); // // On envoit notre score au joueur adverse
 			}
+			this.printWriter.close();
+			this.bufferedReader.close();
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
