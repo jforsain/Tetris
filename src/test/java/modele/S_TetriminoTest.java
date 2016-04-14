@@ -1,4 +1,4 @@
-package tetris;
+package modele;
 
 import static org.junit.Assert.*;
 

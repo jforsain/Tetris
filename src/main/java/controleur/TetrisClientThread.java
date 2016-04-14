@@ -10,7 +10,7 @@ public class TetrisClientThread extends Thread{
 	
 	private BufferedReader bufferedReader;
 	private PrintWriter printWriter;
-	private String reponse;
+	private String reponse = "";
 	private TetrisModele tetrisModele;
 	
 	public TetrisClientThread(BufferedReader pBufferedReader, PrintWriter pPrintWrter, TetrisModele pTetrisModele)
@@ -26,6 +26,7 @@ public class TetrisClientThread extends Thread{
 			while(!this.tetrisModele.getJeu().isGameOver())
 			{
 				reponse = this.bufferedReader.readLine();
+				System.out.println(reponse);
 				this.printWriter.println(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
 				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(reponse)); // // On envoit notre score au joueur adverse
 			}

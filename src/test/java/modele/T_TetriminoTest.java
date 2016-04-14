@@ -1,4 +1,4 @@
-package tetris;
+package modele;
 
 import org.junit.Before;
 import org.junit.Test;
