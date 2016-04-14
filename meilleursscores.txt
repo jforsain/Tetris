@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 5500
 3000
 2000
 2000
 600
+=======
+5500
+4000
+3000
+2500
+2000
+>>>>>>> branch 'master' of https://github.com/jforsain/Tetris.git

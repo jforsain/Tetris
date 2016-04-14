@@ -10,8 +10,8 @@ public class TetrisClientThread extends Thread{
 	
 	private BufferedReader bufferedReader;
 	private PrintWriter printWriter;
-	private String reponse = "";
 	private TetrisModele tetrisModele;
+	private String lecture;
 	
 	public TetrisClientThread(BufferedReader pBufferedReader, PrintWriter pPrintWrter, TetrisModele pTetrisModele)
 	{
@@ -25,13 +25,17 @@ public class TetrisClientThread extends Thread{
 		try {
 			while(!this.tetrisModele.getJeu().isGameOver())
 			{
-				reponse = this.bufferedReader.readLine();
-				System.out.println(reponse);
-				this.printWriter.println(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
-				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(reponse)); // // On envoit notre score au joueur adverse
+				this.printWriter.println(this.tetrisModele.getJeu().getScore()); // On envoie notre score au joueur adverse
+				lecture = this.bufferedReader.readLine();
+				if (Integer.parseInt(lecture)!= 1){
+					this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(lecture)); // On re�oit le score du joueur adverse	
+				}
+				else
+					this.tetrisModele.getJeu().setGameOverAdversaire(true);		
 			}
-			this.printWriter.close();
-			this.bufferedReader.close();
+
+			this.printWriter.println(1); // On notifie l'autre joueur que nous sommes gameover
+			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

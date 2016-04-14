@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -27,27 +28,22 @@ public class TetrisServeurControleur {
 	{
 		ServerSocket s = null;
 	    Socket conn = null;
-	    PrintStream out = null;
+	    //PrintStream out = null;
 	    BufferedReader in = null;
-	    String message = null;
+	    PrintWriter out = null;
 	    
 		try {
 			s = new ServerSocket(13333);
-			conn = s.accept(); // En attente (etat bloquant)
-			/* La connection est établie */
+			conn = s.accept(); 
 			
-			out = new PrintStream(conn.getOutputStream());
-            out.flush();
+			out = new PrintWriter(conn.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             
-            
-            out.println("Welcome. Server version 1.0");
-            out.flush();
-           
 			this.serveurThread = new TetrisServeurThread(in,out, this.tetrisModele);
-			this.serveurThread.start(); // On lance le thread qui va attentre une connexion utilisateur
+			this.serveurThread.start(); 
 			
 			   connexionOK();
+			   
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
