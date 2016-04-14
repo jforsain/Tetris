@@ -1,95 +1,40 @@
 package controleur;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
-import vue.TetrisGUI;
-import modele.Grille;
-import modele.Jeu;
-import modele.Piece;
-import modele.PieceFactory;
 import modele.TetrisModele;
 
 /**
- * Cette classe servira à écouter les connexions entrantes et à échanger les données entre joueurs
+ * Cette classe servira à écouter les connexions entrantes et à échanger les
+ * données entre joueurs
  * */
-public class TetrisServeurThread extends Thread{
-	
-	private ServerSocket serverSocket;
-	private Socket socket;
+public class TetrisServeurThread extends Thread {
+
 	private TetrisModele tetrisModele;
-	private TetrisGUI tetrisGUI;
-	private Tetris2PThread tetris2pThread;
-	
-	public TetrisServeurThread(ServerSocket pServeurSocket, TetrisModele pTetrisModele, TetrisGUI pTetrisGUI, Tetris2PThread pTetris2pThread)
-	{
-		this.serverSocket = pServeurSocket;
+	private BufferedReader bufferedReader;
+	private PrintStream printStream;
+
+	public TetrisServeurThread(BufferedReader pBufferedReader,
+			PrintStream pPrintStream, TetrisModele pTetrisModele) {
 		this.tetrisModele = pTetrisModele;
-		this.tetrisGUI = pTetrisGUI;
-		this.tetris2pThread = pTetris2pThread;
+		this.bufferedReader = pBufferedReader;
+		this.printStream = pPrintStream;
 	}
-	
-	public void run()
-	{
+
+	public void run() {
 		try {
-			while(true)
+			while(!this.tetrisModele.getJeu().isGameOver())
 			{
-				this.socket = this.serverSocket.accept(); // Un client se connecte : on l'accepte
-				if(!this.tetris2pThread.isAlive())
-				{
-					this.tetrisModele.getJeu().setJeu2PDemarre(true);
-					tetrisGUI.getStatsPanel().layoutModeJeu();
-					this.tetrisGUI.goToGrille();
-					
-					this.tetris2pThread.start();
-				}
-				InputStreamReader flux = new InputStreamReader(socket.getInputStream());
-				BufferedReader entree = new BufferedReader(flux);
-				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(entree.readLine()));
+				this.printStream.print(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
+				this.printStream.flush();
+				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(this.bufferedReader.readLine())); // // On envoit notre score au joueur adverse
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}
-	
-	public void initialiser_jeu() {
-		Grille grille = tetrisModele.getGrille();
-		grille.addObserver(tetrisGUI);
-		PieceFactory pf = new PieceFactory();
-
-		Piece piece = pf.getPieceRandom();
-		Piece pieceSuivante = pf.getPieceRandom();
-		tetrisModele.setPiece(piece);
-		tetrisModele.setPieceSuivante(pieceSuivante);
-		grille.apparition_piece(piece);
-		lancer_jeu();
-	}
-
-	public void lancer_jeu() {
-		PieceFactory pf = new PieceFactory();
-		Jeu jeu = tetrisModele.getJeu();
-		
-		jeu.setJeuNonDemarre(false);
-
-		final Timer timerAcceleration = new Timer();
-		TimerTask timerTaskAcceleration = new TimerTask()
-			{
-				@Override
-				public void run() 
-				{
-					tetrisModele.getJeu().setTempsDescente ((int) (tetrisModele.getJeu().getTempsDescente()*0.9));
-					tetrisModele.getJeu().setNiveau (tetrisModele.getJeu().getNiveau() + 1);
-				};	
-			};
-		
-		ControleJeuThread controleJeuThread = new ControleJeuThread(tetrisModele);
-		controleJeuThread.start();
-		timerAcceleration.schedule(timerTaskAcceleration, 30000, 30000); // Acceleration toutes les 30
-												// secondes
 	}
 }

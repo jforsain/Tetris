@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 import modele.TetrisModele;
 import vue.TetrisGUI;
 
@@ -32,10 +31,17 @@ public class TetrisClientControleur {
 	    
 		try {
 			s.connect(new InetSocketAddress(host, 13333));
-			System.out.println("Connecté");
-			connexionOK();
-			s_out = new PrintWriter(s.getOutputStream(), true);
-			s_in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			
+			if(s.isConnected())
+			{
+				/* La connexion a réussi */
+				System.out.println("Connecté");
+				connexionOK();
+				s_out = new PrintWriter(s.getOutputStream(), true);
+				s_in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+				this.clientThread = new TetrisClientThread(s_in, s_out, tetrisModele);
+				this.clientThread.start();
+			}
 			
 		} catch (UnknownHostException e) {
 			System.err.println("Hôte inconnu : " + host);
@@ -44,8 +50,7 @@ public class TetrisClientControleur {
 			System.err.println("Hôte inconnu : " + host);
             System.exit(1);
 		}
-		this.clientThread = new TetrisClientThread(s_in, s_out, tetrisModele);
-		this.clientThread.start();
+		
 	}
 	
 	public void connexionOK(){
