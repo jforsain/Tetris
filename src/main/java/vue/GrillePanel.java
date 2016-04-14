@@ -52,9 +52,6 @@ public class GrillePanel extends JPanel {
 				switch (la_grille[i][j + 1]) {
 				case 0:
 					g.setColor(Color.white);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -63,9 +60,6 @@ public class GrillePanel extends JPanel {
 
 				case 1:
 					g.setColor(Color.CYAN);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -74,9 +68,6 @@ public class GrillePanel extends JPanel {
 
 				case 2:
 					g.setColor(Color.BLUE);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -85,9 +76,6 @@ public class GrillePanel extends JPanel {
 
 				case 3:
 					g.setColor(Color.ORANGE);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -96,9 +84,6 @@ public class GrillePanel extends JPanel {
 
 				case 4:
 					g.setColor(Color.YELLOW);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -107,9 +92,6 @@ public class GrillePanel extends JPanel {
 
 				case 5:
 					g.setColor(Color.RED);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -118,9 +100,6 @@ public class GrillePanel extends JPanel {
 
 				case 6:
 					g.setColor(Color.PINK);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -129,9 +108,6 @@ public class GrillePanel extends JPanel {
 
 				case 7:
 					g.setColor(Color.GREEN);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);
@@ -140,9 +116,6 @@ public class GrillePanel extends JPanel {
 					
 				case 8:
 					g.setColor(Color.BLACK);
-					// g.draw3DRect(j*larg/(inb_colonnes-2),
-					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
-					// haut/(inb_lignes-1),false);
 					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
 							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
 							/ (inb_lignes - 1), true);

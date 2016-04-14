@@ -17,9 +17,9 @@ public class ControleurTimer {
 	private TetrisGUI tetrisGUI;
 	private ControleJeuThread controleJeuThread;
 	
-	public ControleurTimer(TetrisModele tetrisModele, TetrisGUI tetrisGUI) {
-		this.tetrisModele = tetrisModele;
-		this.tetrisGUI = tetrisGUI;
+	public ControleurTimer(TetrisModele pTetrisModele, TetrisGUI pTetrisGUI) {
+		this.tetrisModele = pTetrisModele;
+		this.tetrisGUI = pTetrisGUI;
 	}
 
 	public void initialiser_jeu() {
@@ -32,7 +32,7 @@ public class ControleurTimer {
 		tetrisModele.setPiece(piece);
 		tetrisModele.setPieceSuivante(pieceSuivante);
 
-		grille.apparition_piece(piece);
+		grille.apparitionPiece(piece);
 		lancer_jeu();
 
 	}
@@ -57,9 +57,7 @@ public class ControleurTimer {
 				};	
 			};
 		
-		
-		
-		timerAcceleration.schedule(timerTaskAcceleration, 30000, 30000); // Acceleration toutes les 30
+		timerAcceleration.schedule(timerTaskAcceleration, 30000, 30000); // Acceleration et augmentation du niveau toutes les 30
 												// secondes
 	
 	}

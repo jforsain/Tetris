@@ -21,7 +21,7 @@ public class TetrisControleur {
 	private TetrisServeurControleur tetrisServeurControleur;
 	private TetrisClientControleur tetrisClientControleur;
 	
-	public TetrisControleur(TetrisModele tetrisModele, TetrisGUI tetrisGUI) {
+	public TetrisControleur(TetrisModele pTetrisModele, TetrisGUI pTetrisGUI) {
 		this.tetrisModele = tetrisModele;
 		this.tetrisGUI = tetrisGUI;
 		tetrisModele.addObserver(tetrisGUI);
@@ -67,26 +67,26 @@ public class TetrisControleur {
 					switch (e.getKeyCode()) {
 		
 						case KeyEvent.VK_LEFT:
-							if (tetrisModele.getGrille().peut_aller_a_gauche(tetrisModele.getPiece())) {
-								tetrisModele.getGrille().decaler_gauche(tetrisModele.getPiece());
+							if (tetrisModele.getGrille().peutAllerGauche(tetrisModele.getPiece())) {
+								tetrisModele.getGrille().decalerGauche(tetrisModele.getPiece());
 							}
 							break;
 			
 						case KeyEvent.VK_RIGHT:
-							if (tetrisModele.getGrille().peut_aller_a_droite(tetrisModele.getPiece())) {
-								tetrisModele.getGrille().decaler_droite(tetrisModele.getPiece());
+							if (tetrisModele.getGrille().peutAllerDroite(tetrisModele.getPiece())) {
+								tetrisModele.getGrille().decalerDroite(tetrisModele.getPiece());
 							}
 							break;
 			
 						case KeyEvent.VK_UP:
-							if (tetrisModele.getGrille().peut_pivoter(tetrisModele.getPiece()))
+							if (tetrisModele.getGrille().peutPivoter(tetrisModele.getPiece()))
 							break;
 			
 						case KeyEvent.VK_SPACE:
-							while (tetrisModele.getGrille().peut_descendre(tetrisModele.getPiece())) {
-								tetrisModele.getGrille().descendre_piece(tetrisModele.getPiece());
+							while (tetrisModele.getGrille().peutDescendre(tetrisModele.getPiece())) {
+								tetrisModele.getGrille().descendrePiece(tetrisModele.getPiece());
 							}
-							tetrisModele.getGrille().rafraichir_grille(tetrisModele.getPiece());
+							tetrisModele.getGrille().rafraichirGrille(tetrisModele.getPiece());
 							break;
 						
 						case KeyEvent.VK_DOWN:

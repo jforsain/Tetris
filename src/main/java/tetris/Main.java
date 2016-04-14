@@ -8,8 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		TetrisModele modele = new TetrisModele();
-		TetrisGUI tetrisGUI = new TetrisGUI(modele);
-		new TetrisControleur(modele, tetrisGUI);
+		TetrisModele tetrisModele = new TetrisModele();
+		TetrisGUI tetrisGUI = new TetrisGUI(tetrisModele);
+		new TetrisControleur(tetrisModele, tetrisGUI);
 	}
 }

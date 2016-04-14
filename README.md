@@ -17,21 +17,28 @@ Les fonctionnalités de notre Tetris :
 
 Les spécificités du multijoueurs : 
 - Affichage du score de l'adversaire
-- A chaque fois que l'adversaire marque 1000 points, il vous inflige un malus choisi aléatoirement
-Voici la liste des malus possibles :
-1) Augmentation de deux niveaux, et donc de deux paliers de vitesse
-2) Ajout d'une ligne en bas de la grille, avec donc l'ensemble des cases non vides qui montent d'un cran
-3) Perte de contrôle des touches pendant trois séquences de 3 secondes
+- A chaque fois qu'un joueur marque 1000 points, il inflige à son adversaire un des trois malus (aléatoire) :
+  - Augmentation de deux niveaux, et donc de deux paliers de vitesse
+  - Ajout d'une ligne en bas de la grille, avec donc l'ensemble des cases non vides qui montent d'un cran
+  - Perte de contrôle des touches pendant trois séquences de 3 secondes
 
 Comment jouer :
-Depuis le menu, appuyez sur la touche 'a' si vous désirez lancer une partie solo, ou sur la touche 'b' pour lancer une partie en multijoueurs. 
-Un fois la partie lancée, voici les touches qui répondront à vos actions :
+
+Mode 1 joueur :
+Depuis le menu, appuyez sur la touche 'a'.
+Une fois la partie lancée, voici les touches qui répondront à vos actions :
 - Flèche du haut : Faire tourner la pièce (sens horaire)
 - Flèche du bas : descendre la pièce plus rapidement
 - Flèche de droite : décaler la pièce d'une case vers la droite
 - Flèche de gauche : décaler la pièce d'une case vers la gauche
 - Barre d'espace : descendre la pièce instantanément
 La partie s'arrête lorsque la nouvelle pièce ne peut plus apparaître. Si votre score figure parmi les 5 meilleurs, il est enregistré.
+
+Mode 2 joueurs :
+Ouvrez deux instances du programme. 
+Un premier joueur appuie sur la touche 'b' pour héberger la partie
+Un second joueur appuie sur la touche 'c' pour rejoindre la partie
+La partie se lance alors dans chacune des instances. Le gagnant est celui qui tient le plus longtemps indépendamment du score.
 
 Exercice architecture :
 Notre architecture est de type MVC, Modèle-Vue-Controleur. Nous avons choisi ce type d'architecture pour séparer logiquement tous les composants du programme. La modèle contient toutes les données (pièce, grille, données de jeu) et les règles à respecter. La vue est l'interface utilisateur, elle affiche les composants graphiques. Le controleur est le coordinateur de l'ensemble, il suit les actions de l'utilisateur, modifie le modèle et contrôle la vue.

@@ -2,7 +2,6 @@ package modele;
 
 public class O_Tetrimino extends Piece{
 	
-	private Couleur couleur;
 	private int[][] matricePositionsOTetrimino = {
 				{0,0,1,0,0,1,1,0,0,1,0,0,0,0,0,0},
 				{0,0,0,0,0,1,1,0,0,0,1,1,0,0,0,0},
@@ -12,11 +11,11 @@ public class O_Tetrimino extends Piece{
 	
 	public O_Tetrimino() {
 		super();
-		this.couleur = Couleur.JAUNE;
 		iCouleur = 4;
 		initialisationCoordonnees();
 	}
 	
+	//Le but est de transformer cette matrice en couples de coordonnées avec emplacement des 1
 	private void initialisationCoordonnees() {
 		
 		// 1. matrice temporaire
