@@ -2,10 +2,9 @@ package controleur;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -16,38 +15,36 @@ public class TetrisClientControleur {
 
 	private TetrisModele tetrisModele;
 	private TetrisGUI tetrisGUI;
-	private String host;
-	private int port = 13333;
+	private TetrisClientThread clientThread;
 	
 	public TetrisClientControleur (TetrisModele pTetrisModele, TetrisGUI pTetrisGUI){
 		this.tetrisModele = pTetrisModele;
 		this.tetrisGUI = pTetrisGUI;
-		this.host = "localhost";
 		connexionLocalHost();
 	}
 	
 	private void connexionLocalHost() {
 		// TODO Auto-generated method stub
+		PrintWriter s_out = null;
+	    BufferedReader s_in = null;
+	    Socket s = new Socket();
+	    String host = "localhost";
+	    
 		try {
-			Socket connection = new Socket(host, port);
-			
-			/* Flux entrant */
-			InputStream in = connection.getInputStream();
-			InputStreamReader reader = new InputStreamReader(in);
-			BufferedReader istream = new BufferedReader(reader);
-			
-			/* Flux sortant */
-			OutputStream out = connection.getOutputStream();
-			PrintWriter ostream = new PrintWriter(out);
-			ostream.flush();
+			s.connect(new InetSocketAddress(host, 13333));
+			System.out.println("Connecté");
+			s_out = new PrintWriter(s.getOutputStream(), true);
+			s_in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Hôte inconnu : " + host);
+            System.exit(1);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Hôte inconnu : " + host);
+            System.exit(1);
 		}
+		this.clientThread = new TetrisClientThread(s_in, tetrisModele);
+		this.clientThread.start();
 	}
 
 	public void connexionOK(){
