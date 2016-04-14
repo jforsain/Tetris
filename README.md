@@ -2,26 +2,35 @@
 
 Auteurs : Jean-Luc FORSAIN, Antoine LIEBERT, Jordy RUIZ-GABANCHO
 
-Build and lancement du programme - Exécuter la commande suivante :
+Build et lancement du programme - Exécuter la commande suivante :
 mvn clean install && java -jar *.jar
 
 Les fonctionnalités de notre Tetris :
 - Menu principal lors du lancement du programme
-- Mode 1 joueur
-- Mode multijoueurs
-- Affichage du score, du niveau, du nombre de lignes complétées et de la prochaine pièce en temps réél
+- Mode 1 joueur ou mode multijoueurs
+- Affichage du score, du niveau, du nombre de lignes complétées et de la prochaine pièce en temps réel
 - Un niveau de plus toutes les 30 secondes (+10% de vitesse de descente des pièces)
 - 7 pièces différentes avec une couleur pour chacun et toutes leurs positions possibles
-- Réponse aux commandes des utilisateurs pour déplacer latéralement les pièces, les faire tourner, et les descendre instantanément
+- Réponse aux commandes des utilisateurs pour déplacer latéralement les pièces, les faire tourner, et les descendre instantanément ou rapidement
 - Gestion des collisions
+- Tableau des 5 meilleurs scores issus d'un fichier qui se met à jour à chaque partie
+
+Les spécificités du multijoueurs : 
+- Affichage du score de l'adversaire
+- A chaque fois que l'adversaire marque 1000 points, il vous inflige un malus choisi aléatoirement
+Voici la liste des malus possibles :
+1) Augmentation de deux niveaux, et donc de deux paliers de vitesse
+2) Ajout d'une ligne en bas de la grille, avec donc l'ensemble des cases non vides qui montent d'un cran
+3) Perte de contrôle des touches pendant trois séquences de 3 secondes
 
 Comment jouer :
 Depuis le menu, appuyez sur la touche 'a' si vous désirez lancer une partie solo, ou sur la touche 'b' pour lancer une partie en multijoueurs. 
 Un fois la partie lancée, voici les touches qui répondront à vos actions :
 - Flèche du haut : Faire tourner la pièce (sens horaire)
-- Flèche du bas : Descendre la pièce instantanément
-- Flèche de doite : décaler la pièce d'une case vers la droite
+- Flèche du bas : descendre la pièce plus rapidement
+- Flèche de droite : décaler la pièce d'une case vers la droite
 - Flèche de gauche : décaler la pièce d'une case vers la gauche
+- Barre d'espace : descendre la pièce instantanément
 La partie s'arrête lorsque la nouvelle pièce ne peut plus apparaître. Si votre score figure parmi les 5 meilleurs, il est enregistré.
 
 Exercice architecture :
@@ -30,11 +39,8 @@ Ainsi, la vue a connaissance du modèle mais ne le modifie pas. Le controleur a 
 Le fait de fonctionner en MVC a permis à notre programme d'être évolutif et facile à maintenir. Par exemple, nous avons pu ajouter la fonctionnalité multijoueurs sans perdre de temps à ré-écrire des fonctionnalités existantes car notre programme a atteint une flexibilité satisfaisante grâce au pattern MVC.
 
 Exercice Design Pattern / Solid :
-Pattern Observable/Observer : Nous utilisé le pattern Observable/Observer entre l'objet grille et l'affichage du jeu. Lorsque la grille subit une modification de ses données, elle notifie la vue. La vue se met alors à jour en reprenant la dernière version du modèle. Ce pattern est très utile dans le cadre d'un jeu avec des intéractions utilisateurs et de nombreuses modifications du modèle. Il nous a permis de gagner du temps sur la gestion des mises à jour des composants graphiques.
+Pattern Observable/Observer : Nous utilisé le pattern Observable/Observer entre l'objet grille et l'affichage du jeu. Lorsque la grille subit une modification de ses données, elle notifie la vue. La vue se met alors à jour en reprenant la dernière version du modèle. Ce pattern est très utile dans le cadre d'un jeu avec des interactions utilisateurs et de nombreuses modifications du modèle. Il nous a permis de gagner du temps sur la gestion des mises à jour des composants graphiques.
 Pattern Factory : Le pattern factory a été utilisé dans le modèle, et plus particulièrement avec les pièces. Nous avons défini une classe Piece abstraite, 7 classes filles pour chaque type de pièce, et une classe Factory qui permet de générer aléatoirement une des 7 classes filles possibles. Ce système nous a donc permis d'instancier dynamiquement nos sous-classes et de permettre facilement l'ajout de nouvelles pièces pour des éventuelles évolutions.
 O de Solid : Open-Closed Principle. Nous avons veillé à laisser ouvert aux évolutions tous les composants de notre programme, tout en évitant de permettre la modification. A chaque évolution de notre programme, nous avons grâce au respect de ce principe pu ajouter des fonctionnalités sans jamais se perdre dans le code et compromettre le bon fonctionnement du jeu.
-
-
-
 
 
