@@ -49,12 +49,10 @@ public class TetrisControleur {
 					break;	
 
 				case KeyEvent.VK_B:
-
 					tetrisModele.getJeu().setModeJeu(2);
-					tetrisGUI.getStatsPanel().layoutModeJeu();
-					tetrisGUI.goToGrille();
 					tetrisServeurControleur = new TetrisServeurControleur(tetrisModele, tetrisGUI);
 					break;
+
 					
 				case KeyEvent.VK_C:
 

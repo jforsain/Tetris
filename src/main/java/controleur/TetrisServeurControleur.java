@@ -27,6 +27,7 @@ public class TetrisServeurControleur {
 		this.tetrisModele = pTetrisModele;
 		this.tetrisGUI = pTetrisGUI;
 		enAttenteDeConnexion();
+		
 	}
 	
 	public void enAttenteDeConnexion()
