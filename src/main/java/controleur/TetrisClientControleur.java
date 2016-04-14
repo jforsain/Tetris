@@ -51,6 +51,9 @@ public class TetrisClientControleur {
 	}
 
 	public void connexionOK(){
+
+		tetrisGUI.getStatsPanel().layoutModeJeu();
+		tetrisGUI.goToGrille();
 		ControleurTimer controleurTimer = new ControleurTimer(tetrisModele, tetrisGUI);
 		controleurTimer.initialiser_jeu();
 	}

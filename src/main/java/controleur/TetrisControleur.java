@@ -57,8 +57,6 @@ public class TetrisControleur {
 				case KeyEvent.VK_C:
 
 					tetrisModele.getJeu().setModeJeu(2);
-					tetrisGUI.getStatsPanel().layoutModeJeu();
-					tetrisGUI.goToGrille();
 					tetrisClientControleur = new TetrisClientControleur(tetrisModele, tetrisGUI);
 					break;	
 			}
