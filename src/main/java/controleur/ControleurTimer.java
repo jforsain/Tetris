@@ -54,14 +54,13 @@ public class ControleurTimer {
 				{
 					tetrisModele.getJeu().setTempsDescente ((int) (tetrisModele.getJeu().getTempsDescente()*0.9));
 					tetrisModele.getJeu().setNiveau (tetrisModele.getJeu().getNiveau() + 1);
-					controleJeuThread.malus3();
 					
 				};	
 			};
 		
 		
 		
-		timerAcceleration.schedule(timerTaskAcceleration, 10000, 10000); // Acceleration toutes les 30
+		timerAcceleration.schedule(timerTaskAcceleration, 30000, 30000); // Acceleration toutes les 30
 												// secondes
 	
 	}
