@@ -36,11 +36,11 @@ public class TetrisClientControleur {
 			{
 				/* La connexion a réussi */
 				System.out.println("Connecté");
-				connexionOK();
 				s_out = new PrintWriter(s.getOutputStream(), true);
 				s_in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 				this.clientThread = new TetrisClientThread(s_in, s_out, tetrisModele);
 				this.clientThread.start();
+				connexionOK();
 			}
 			
 		} catch (UnknownHostException e) {

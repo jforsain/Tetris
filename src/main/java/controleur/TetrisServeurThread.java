@@ -28,7 +28,7 @@ public class TetrisServeurThread extends Thread {
 		try {
 			while(!this.tetrisModele.getJeu().isGameOver())
 			{
-				this.printStream.print(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
+				this.printStream.println(this.tetrisModele.getJeu().getScore()); // On envoit notre score au joueur adverse
 				this.printStream.flush();
 				this.tetrisModele.getJeu().setScoreAdversaire(Integer.parseInt(this.bufferedReader.readLine())); // // On envoit notre score au joueur adverse
 			}
