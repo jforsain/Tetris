@@ -137,6 +137,17 @@ public class GrillePanel extends JPanel {
 							/ (inb_lignes - 1), true);
 
 					break;
+					
+				case 8:
+					g.setColor(Color.BLACK);
+					// g.draw3DRect(j*larg/(inb_colonnes-2),
+					// i*haut/(inb_lignes-1), larg/(inb_colonnes-2),
+					// haut/(inb_lignes-1),false);
+					g.fill3DRect(j * larg / (inb_colonnes - 2), i * haut
+							/ (inb_lignes - 1), larg / (inb_colonnes - 2), haut
+							/ (inb_lignes - 1), true);
+
+					break;
 
 				}
 			}

@@ -15,7 +15,8 @@ public class ControleurTimer {
 
 	private TetrisModele tetrisModele;
 	private TetrisGUI tetrisGUI;
-
+	private ControleJeuThread controleJeuThread;
+	
 	public ControleurTimer(TetrisModele tetrisModele, TetrisGUI tetrisGUI) {
 		this.tetrisModele = tetrisModele;
 		this.tetrisGUI = tetrisGUI;
@@ -42,21 +43,25 @@ public class ControleurTimer {
 		
 		jeu.setJeuNonDemarre(false);
 
+		controleJeuThread = new ControleJeuThread(tetrisModele);
+		controleJeuThread.start();
+		
 		final Timer timerAcceleration = new Timer();
 		TimerTask timerTaskAcceleration = new TimerTask()
 			{
 				@Override
 				public void run() 
 				{
-					tetrisModele.getJeu().set_temps_descente ((int) (tetrisModele.getJeu().get_temps_descente()*0.9));
-					tetrisModele.getJeu().set_niveau (tetrisModele.getJeu().get_niveau() + 1);
+					tetrisModele.getJeu().setTempsDescente ((int) (tetrisModele.getJeu().getTempsDescente()*0.9));
+					tetrisModele.getJeu().setNiveau (tetrisModele.getJeu().getNiveau() + 1);
+					controleJeuThread.malus3();
+					
 				};	
 			};
 		
-		ControleJeuThread controleJeuThread = new ControleJeuThread(tetrisModele);
-		controleJeuThread.start();
 		
-		timerAcceleration.schedule(timerTaskAcceleration, 30000, 30000); // Acceleration toutes les 30
+		
+		timerAcceleration.schedule(timerTaskAcceleration, 10000, 10000); // Acceleration toutes les 30
 												// secondes
 	
 	}

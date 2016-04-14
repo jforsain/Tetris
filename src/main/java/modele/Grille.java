@@ -298,7 +298,7 @@ public class Grille extends Observable {
 																// grille de bas
 																// en haut
 			contientBlocs = true;
-			for (int j = 1; j < this.iColonnes - 1; j++) { // parcours de 1 à 10
+			for (int j = 1; j <= this.iColonnes - 2; j++) { // parcours de 1 à 10
 				tableau[j - 1] = iLaGrilleTab[i][j];
 			}
 			
@@ -314,14 +314,14 @@ public class Grille extends Observable {
 			/* 3 - Si la ligne contient que des blocs, elle disparaît */
 			if (contientBlocs) {
 				nbLignesCompletees++;
-				for (int l = 1; l < this.iColonnes - 1; l++) {
+				for (int l = 1; l <= this.iColonnes - 2; l++) {
 					iLaGrilleTab[i][l] = 0;
 				}
 
 				/* 4 - On met à jour la grille */
 				for (int j = i; j >= 0; j--) { // On parcours la grille de bas
 												// en haut
-					for (int m = 1; m < this.iColonnes - 1; m++) {
+					for (int m = 1; m <= this.iColonnes - 2; m++) {
 						if (j != 0)
 							iLaGrilleTab[j][m] = iLaGrilleTab[j - 1][m];
 					}
@@ -333,6 +333,26 @@ public class Grille extends Observable {
 		return nbLignesCompletees;
 	}
 
+	
+	public void lancerMalus2(Piece p){
+		vider_piece_dans_grille(p);
+		
+		for (int i = 1; i <= this.iLignes - 2; i++) { // On parcourt la grille de haut en bas et on monte tout d'un cran
+			for (int j = 1; j <= this.iColonnes - 2; j++) {
+					iLaGrilleTab[i-1][j] = iLaGrilleTab[i][j]; 
+			}
+		}
+		
+		for (int j = 1; j <= this.iColonnes - 2; j++) { // On rajoute une ligne en bas avec un trou au centre
+			if (j != 6)
+				iLaGrilleTab[this.iLignes-2][j] = 8; 
+			else
+				iLaGrilleTab[this.iLignes-2][j] = 0; 
+		}
+		
+		rafraichir_grille(p);
+	}
+	
 	public int[][] getiLaGrilleTab() {
 		return iLaGrilleTab;
 	}

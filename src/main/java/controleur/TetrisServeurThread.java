@@ -82,8 +82,8 @@ public class TetrisServeurThread extends Thread{
 				@Override
 				public void run() 
 				{
-					tetrisModele.getJeu().set_temps_descente ((int) (tetrisModele.getJeu().get_temps_descente()*0.9));
-					tetrisModele.getJeu().set_niveau (tetrisModele.getJeu().get_niveau() + 1);
+					tetrisModele.getJeu().setTempsDescente ((int) (tetrisModele.getJeu().getTempsDescente()*0.9));
+					tetrisModele.getJeu().setNiveau (tetrisModele.getJeu().getNiveau() + 1);
 				};	
 			};
 		
