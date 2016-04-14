@@ -24,7 +24,7 @@ public class TetrisClientControleur {
 	}
 	
 	private void connexionLocalHost() {
-		// TODO Auto-generated method stub
+
 		PrintWriter s_out = null;
 	    BufferedReader s_in = null;
 	    Socket s = new Socket();
@@ -33,6 +33,7 @@ public class TetrisClientControleur {
 		try {
 			s.connect(new InetSocketAddress(host, 13333));
 			System.out.println("Connecté");
+			connexionOK();
 			s_out = new PrintWriter(s.getOutputStream(), true);
 			s_in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
@@ -43,10 +44,10 @@ public class TetrisClientControleur {
 			System.err.println("Hôte inconnu : " + host);
             System.exit(1);
 		}
-		this.clientThread = new TetrisClientThread(s_in, tetrisModele);
+		this.clientThread = new TetrisClientThread(s_in, s_out, tetrisModele);
 		this.clientThread.start();
 	}
-
+	
 	public void connexionOK(){
 
 		tetrisGUI.getStatsPanel().layoutModeJeu();
